@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size:100px">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" 
+  content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no">
+  <title>Document</title>
+  <!-- sdk -->
+  <script type="text/javascript" 
+  src="https://api.map.baidu.com/api?v=2.0&ak=47FQtS6XkphGqmZ5nSEj6WTSTwE8SGaT"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      /* css 继承 */
+      font-size: 0.28rem;
+      line-height: 1.5;
+    }
+    img {
+      max-width: 100%;
+    }
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+    .poi-item-wrapper {
+      background-color: #fff;
+      padding: 0.24rem 0 0 0.3rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .poi-item-wrapper .poi-info-wrapper {
+      display: flex;
+    }
+    .poi-item-wrapper .image-wrapper {
+      position: relative;
+      margin-top: 0.05rem;
+      width: 1.6rem;
+      height: 1.61rem;
+    }
+    .poi-item-wrapper .poi-info {
+      margin-left: 0.18rem;
+      flex:1 ;
+    }
+    .poi-item-wrapper .poi-info .price-wrapper {
+      position: relative;
+      font-size: 0.24rem;
+      line-height: 0.33rem;
+      margin-top: 0.06rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      height: 2rem;
+    }
+    .poi-item-wrapper .poi-info .location {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 0.33rem;
+      line-height: 0.33rem;
+      font-size: 0.24rem;
+      font-family: PingFangSC-Regular;
+      color: #666666;
+      letter-spacing: 0.2px;
+    }
+  </style>
+</head>
+<body>
+  <!-- html  +   css -->
+  <!-- 附近的商家 info  -->
+  <div class="shop-list">
+    <div class="poi-item-wrapper">
+      <div class="poi-info-wrapper">
+        <div class="image-wrapper">
+          <div class="imgbox">
+            <img src="http://p0.meituan.net/deal/__45899142__3351739.jpg@320w_320h_1e_1c" alt="">
+          </div>
+        </div>
+        <div class="poi-info">
+          <div class="poi-name"></div>
+          <div class="price-wrapper">
+            <div class="location"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="poi-item-wrapper">
+      
+    </div>
+  </div>
+  <!-- <div id="map"></div> -->
+  <script>
+  // 1. 距离
+  // 2. 点 经纬度
+  // 115.941546,28.544622
+  // 命名规范
+  const myLatitude = '28.544622',
+    myLongitude = '115.941546',
+    kfcLatitude = '28.549066',
+    kfcLongitude = '115.950531' ;
+  
+  // sdk 有点大， 他在远方
+  // js 事件机制
+  window.onload = function() {
+
+    function parseDistance(distance) {
+      //  如果> 1000米 返回  4.1km
+      // 否则 整数  936m
+      if (distance < 1000) {
+        return parseInt(distance); 
+      } else {
+        return (distance/1000).toFixed(1);
+      }
+    }
+
+    //  开始我们的js 编程
+    const map = new BMap.Map(); //实例化地图
+    // map.centerAndZoom("南昌县仁兴家园", 17)
+
+    //两点距离
+    const myPoint = new BMap.Point(myLongitude, myLatitude);
+    const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
+    const distance = parseDistance(
+      // 925.1111
+      map.getDistance(myPoint, kfcPoint)
+    ); // Number
+    // console.log(distance);
+    document.querySelector('.poi-name').innerHTML =  '肯德基';
+    document.querySelector('.location').innerHTML = distance;
+    document.querySelector('.imgbox img').src = 
+      "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
+  }
+  
+  </script>
+</body>
+</html>
