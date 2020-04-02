@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            /* css 选择器 */
+            /* . 类选择 (html 上面的class) */
+            .body{
+                background: url("./cat/maoshenti.png");
+                width: 117px;
+                height: 201px;
+                /* 水平居中 垂直居中 */
+                /* absolute 绝对定位,相对于父级第一个设置了定位属性的元素来定位，如果没有相对于 body */
+                position: absolute;
+                /* 相对于 body 的宽高，计算 宽和高的50% */
+                left: 50%;
+                top: 50%;
+                /* 微调一点 长50% 宽50% */
+                /* x y z */
+                /* - 左 */
+                /* 相对于自己的宽高来计算百分比 */
+                transform: translate3d(-50%,-50%,0);
+                z-index: 11;
+            }
+            .weiba{
+                /* 相对于 body div来定位 */
+                position: absolute;
+                width: 64px;
+                height: 194px;
+                background: url("./cat/maowei.png");
+                top: -182px;
+                /* 摇摆 (rotate) 起来 */
+                animation: ani 3s ease-in-out infinite alternate;
+                /* ease-in-out 动画速度 */
+                /* 3s 时间 */
+                /* ani 名字 */
+                /* 动画播放几次 infinite: 无穷大 */
+                /* alternate: 初始的0->100% , 100%->初始的0 都有动画  */
+                /* 以尾巴根部旋转 默认:50% 50% 中心点旋转 */
+                transform-origin: 100% 100%;
+            }
+            /* 关键帧:动画里面几个关键的点 */
+            /* 定义一个叫 ani 的动画 */
+            @keyframes ani{
+                100%{
+                    /* 逆时针 5deg */
+                    transform: rotate(-5deg);
+                }
+            }
+            .maozhua{
+                position: absolute;
+                background: url("./cat/maozhua.png");
+                width: 34px;
+                height: 81px;
+                left: 52%;
+                top: 62%;
+                animation: zhua 3s ease-in-out infinite alternate;
+                transform-origin: 50% 0%;
+                z-index: 0;
+            }
+            @keyframes zhua {
+                100%{
+                    transform: rotate(10deg);
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="cat">
+            <div class="body">
+                <div class="weiba"></div>
+                
+            </div> 
+            <div class="maozhua"></div>   
+        </div>
+    </body>
+</html>

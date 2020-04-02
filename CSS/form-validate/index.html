@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- action/class:属性, attribute -->
+    <form action="http://www.baidu.com" class="form" name="myform">
+        <div>
+            <label for="userName">用户名:</label>
+            <input type="text" placeholder="输入用户名" id="userName">
+        </div>
+
+        <div>
+            <label for="pwd">密码:</label>
+            <input type="text" placeholder="输入密码" id="pwd">
+        </div>
+
+        <div>
+            <label for="repwd">确认密码:</label>
+            <input type="text" placeholder="再次输入密码" id="repwd">
+        </div>
+        <div>
+            <label for="sex">性别</label>
+            <!-- name: 都是 sex 的选项 -->
+            <input type="radio" value="men" name="sex" id="men" checked>
+            <label for="men">男</label>
+            <input type="radio" value="women" name="sex" id="women">
+            <label for="women">女</label>
+        </div>
+        <div>
+            <label for="hobby">爱好</label>
+            <select name="hobby" id="hobby">
+                <option value="dog">dog</option>
+                <option value="cat" selected>cat</option>
+            </select>
+        </div>
+        <button type="submit">提交</button>
+        
+    </form>
+    <script>
+        // 1 拿到 form 里面的值
+        // document.forms 取到所有的表单
+        const form = document.forms.myform
+        console.log(form);
+        const hobby = form.hobby.value
+        console.log(hobby);
+        // 提交的时候
+        form.addEventListener('submit',function(ev){
+            console.log('提交了');
+            // 跳转
+            // 阻止 html 表单默认的特点、事件
+            ev.preventDefault();
+            const userName=form.userName.value;
+            const pwd=form.pwd.value;
+            const repwd=form.repwd.value;
+            const sex=form.sex.value;
+            const hobby=form.hobby.value;
+            if(userName.trim().length==0){
+                alert('userName 不能为空');
+                return;
+            }
+            if(repwd.trim()!==pwd){
+                alert('确认密码和密码不一致');
+            }
+            // console.log(userName,pwd,repwd,sex,hobby);
+            // 显示：动态结构 html
+            // 构造一个 div 前面是变量名 括号里面是 div标签
+            const div=document.createElement('div');
+            div.innerHTML=`
+            <span>用户名:${userName}</span>
+            <span>密码:${pwd}</span>
+            <span>性别:${sex}</span>
+            <span>爱好:${hobby}</span>
+            `
+            // 插到页面上
+            document.body.appendChild(div)
+        })
+    </script>
+</body>
+
+</html>

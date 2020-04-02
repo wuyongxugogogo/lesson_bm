@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            /* 不同浏览器 对于我们html标签都会有不同 margin padding 的默认值 
+            全部初始化为 0 */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* html,body{
+          width: 100%;
+          height: 100%;
+      } */
+        .view {
+            /* 规则： */
+            /* 100%:父级 */
+            /* 父级本来就没有占满全屏:100% 计算出来也没有占满 */
+            /* width: 100%;
+          height: 100%; */
+            /* absolute 相对于父级第一个设置了定位元素 (加了position属性)，相对于视窗 */
+            position: absolute;
+            /* 四个方向都贴着视窗 */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffebeb;
+        }
+
+        html {
+            font-size: 37.5px;
+        }
+
+        .bear {
+            /* rem：相对单位 
+           相对于 html 的 font-size
+           6.5 * 37.5 
+           1.89 * 37.5 */
+            width: 6.5rem;
+            height: 1.89rem;
+            /* 如果 width 固定了 可以用 auto 达到水平居中 */
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .bear-img {
+            background: url(http://s1.map.bdimg.com/zt/y2015/waimaibear/mobile/images/rider1_1b78925.png);
+            width: 2.4rem;
+            height: 1.89rem;
+            /* 背景图大小 和 width height 一样 */
+            background-size: 100% 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            /* linear匀速 forwards:向前 不回头 */
+            animation: riderDrive 1s linear forwards;
+        }
+
+        .progress {
+            width: 6.25rem;
+            height: 0.245rem;
+            border: 2px solid black;
+            border-radius: .5rem;
+            margin-left: auto;
+            margin-right: auto;
+            /* 超出隐藏 */
+            overflow: hidden;
+        }
+
+        .progress-red {
+            background-color: red;
+            /* width: 25%; */
+            height: 100%;
+            float: right;
+            /* animation: progress 1s linear forwards; */
+        }
+        /* @keyframes progress{
+            from{
+                width: 0%;
+            }
+            to{
+                width:100%
+            }
+        } */
+
+        @keyframes riderDrive {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            4% {
+                transform: translate3d(0, -.125rem, 0);
+            }
+
+            8% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            16% {
+                transform: translate3d(-.4rem, -.125rem, 0);
+            }
+
+            24% {
+                transform: translate3d(-.8rem, 0, 0);
+            }
+
+            32% {
+                transform: translate3d(-1.2rem, -.125rem, 0rem)
+            }
+
+            40% {
+                transform: translate3d(-1.6rem, 0rem, 0rem)
+            }
+
+            48% {
+                transform: translate3d(-2rem, -.125rem, 0rem)
+            }
+
+            56% {
+                transform: translate3d(-2.4rem, 0rem, 0rem)
+            }
+
+            64% {
+                transform: translate3d(-2.8rem, -.125rem, 0rem)
+            }
+
+            72% {
+                transform: translate3d(-3.2rem, 0rem, 0rem)
+            }
+
+            80% {
+                transform: translate3d(-3.6rem, -.125rem, 0rem)
+            }
+
+            88% {
+                transform: translate3d(-4rem, 0rem, 0rem)
+            }
+
+            96% {
+                transform: translate3d(-4.4rem, -.125rem, 0rem)
+            }
+
+            100% {
+                transform: translate3d(-4.4rem, 0rem, 0rem)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="view">
+        <div class="bear">
+            <div class="bear-img"></div>
+        </div>
+        <div class="progress">
+            <div class="progress-red"></div>
+        </div>
+    </div>
+    <script>
+        // const 定义常量，不能改变 后面也不能改变 querySelector选中
+        const progress = document.querySelector('.progress-red')
+        // 0-100% 慢慢变化
+        // 每隔100ms
+        // 1s=1000ms
+        var width=0;
+        var interval = setInterval(function(){
+            // 每隔100ms 宽度加10
+            width = width + 1;
+            if(width>100){
+                // 定时器过期
+                // 清除掉
+                clearInterval(interval);
+                // 后面的语句 停下来
+                return;
+            }
+            progress.style.width=width+'%';//10和% 拼在一起 作为有一个字符串
+        },10)
+    </script>
+</body>
+
+</html>
