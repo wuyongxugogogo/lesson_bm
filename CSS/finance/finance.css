@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url("./fonts/icomoon.eot?yisc3l");
+  src: url("./fonts/icomoon.eot?yisc3l#iefix") format("embedded-opentype"), url("./fonts/icomoon.woff2?yisc3l") format("woff2"), url("./fonts/icomoon.ttf?yisc3l") format("truetype"), url("./fonts/icomoon.woff?yisc3l") format("woff"), url("./fonts/icomoon.svg?yisc3l#icomoon") format("svg");
+}
 * {
   margin: 0;
   padding: 0;
@@ -17,14 +22,64 @@ a {
 }
 .finance-wrapper {
   height: 102px;
-  width: 388px;
+  width: 400px;
   border: 1px solid #cae0fc;
   border-top: 3px solid #9ec9ee;
   overflow: hidden;
 }
+.st-item .detail .price {
+  font-size: 11px;
+  width: 80px;
+  display: inline-block;
+}
 .st-item .detail span {
   color: #df4d42;
 }
-.icon-num-2::before {
+[class^="icon-num-"],
+[class*="icon-num-"] {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-size: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+.icon-num-2:before {
   content: "\32";
+}
+.icon-num-7:before {
+  content: "\37";
+}
+.icon-num-9:before {
+  content: "\39";
+}
+.icon-num-3:before {
+  content: "\33";
+}
+.icon-num-d:before {
+  content: "\2e";
+}
+.st-item .detail .float,
+.st-item .detail .percent {
+  margin-left: 0;
+  font-size: 12px;
+  display: inline-block;
+  font-family: Arial;
+}
+.st-item .detail .float {
+  width: 45px;
+}
+.st-item .detail-down span {
+  color: #2daa50;
+}
+.icon-num-0:before {
+  content: "\30";
+}
+.icon-num-4:before {
+  content: "\34";
+}
+.icon-num-1:before {
+  content: "\31";
 }
