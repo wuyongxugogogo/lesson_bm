@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .drag{
+            left: 0;
+            top: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="drag1" class="drag">h2</h2>
+    <script>
+        // 1: 按下鼠标
+        // 2: 拖
+        // 3: 放
+        const drag1 = document.querySelector('#drag1');
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const dragEleSize = drag1.getBoundingClientRect();
+        function onMouseMove(event){
+            let moveX = event.clientX, moveY = event.clientY;
+            let distanceX = windowWidth - dragEleSize.width;
+            let distanceY = windowHeight - dragEleSize.height;
+            if (moveX > distanceX){
+                moveX = distanceX
+            }
+            if (moveY > distanceY){
+                moveY = distanceY;
+            }
+            drag1.style.transform = `translate3d(${moveX}px,${moveY}px,0)`;
+        }
+        drag1.addEventListener('mousedown',function(){
+            // 鼠标点下去才能拖
+            document.addEventListener('mousemove',onMouseMove)
+            document.addEventListener('mouseup',function(){
+                // 当鼠标放开时，移除mousemove事件
+                document.removeEventListener('mousemove',onMouseMove)
+            })
+        })
+    </script>
+</body>
+</html>

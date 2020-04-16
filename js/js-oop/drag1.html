@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .drag{
+            left: 0;
+            top: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="drag1" class="drag">h2</h2>
+    <button id="btn" class="drag">btn</button>
+    <script>
+        function DragAble(selector) {
+            this.ele = document.querySelector(selector);
+            this.windowWidth = window.innerWidth;
+            this.windowHeight = window.innerHeight;
+            this.eleSize = this.ele.getBoundingClientRect();
+            // 要移动的元素 绑定一个 mouseDown
+            this.ele.addEventListener('mousedown',this.onMouseDown)
+        }
+        DragAble.prototype.onMouseDown = function(){
+            // 普通函数 this 指向 我们的 html  元素，this.onMouseMove取不到，prototype上面那个
+            document.addEventListener('mousemove',this.onMouseMove);
+            document.addEventListener('mouseup',this.onMouseUp);
+        }
+        DragAble.prototype.onMouseMove = function(event){
+            let moveX = event.clientX, moveY = event.clientY;
+            let distanceX = this.windowWidth - this.eleSize.width;
+            let distanceY = this.windowHeight - this.eleSize.height;
+            if (moveX < 0) moveX = 0;
+            if (moveX > distanceX) moveX = distanceX;
+            if (moveY < 0) moveY = 0;
+            if (moveY > distanceY) moveY = distanceY;
+            this.ele.style.transform = `translate3d(${moveX}px,${moveY}px,0)`;
+        }
+        DragAble.prototype.onMouseUp = function(){
+            document.removeEventListener('mousemove',this.onMouseMove);
+        }
+        let drag1 = new DragAble('#drag1');
+    </script>
+</body>
+</html>

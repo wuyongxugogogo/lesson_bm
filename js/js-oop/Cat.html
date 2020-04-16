@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js 类
+        // 猫：抽象
+        // 属性：描述 类 特点
+        // 方法：描述 类，干啥？
+        function Cat(name,color){
+            // this 依然很抽象，指向哪里？不确定，不知道
+            this.name = name;
+            this.color = color;
+            this.say();
+        }
+        // 每一个函数自带有一个 prototype 的值，我们把方法都挂在上面
+        Cat.prototype.say = function(){
+            console.log('喵喵~',this.color,this.name);
+        }
+        // 具体
+        // 发生 new 猫 就被确定下来了 this === cat1
+        let cat1 = new Cat('小花','white');
+        // this === cat2
+        let cat2 = new Cat('小黑','black');
+        let cat3 = new Cat('小黑','black');
+        console.log(cat3);
+    </script>
+</body>
+</html>

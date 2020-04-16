@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .drag {
+            left: 0;
+            top: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 具体 h2 -->
+    <h2 id="drag1" class="drag">h2</h2>
+    <!-- btn 也想要拖拽 -->
+    <button id="btn" class="drag">btn</button>
+    <script>
+        //  swiper 
+        // selector: #drag1  #btn 让他变成 可以拖拽的
+        function DragAble(selector) {
+            this.ele = document.querySelector(selector);
+            this.windowWidth = window.innerWidth;
+            this.windowHeight = window.innerHeight;
+            this.eleSize = this.ele.getBoundingClientRect();
+            // 要移动的元素 绑定一个 mouseDown
+            this.ele.addEventListener('mousedown', this.onMouseDown.bind(this))
+        }
+        // 
+        DragAble.prototype.onMouseDown = function () {
+            // console.log('down', this.onMouseMove, this);
+            // 普通函数 this 指向 我们的 html 元素，this.onMouseMove 取不到，prototype 上面那个 onMouseMove
+            // 导致 事件绑定失效，
+            const onMouseMove = (event) => {
+                let moveX = event.clientX, moveY = event.clientY;
+                let distanceX = this.windowWidth - this.eleSize.width;
+                let distanceY = this.windowHeight - this.eleSize.height;
+                if (moveX < 0) moveX = 0;
+                if (moveX > distanceX) moveX = distanceX;
+                if (moveY < 0) moveY = 0;
+                if (moveY > distanceY) moveY = distanceY;
+                // 要移动的元素在哪？this.ele
+                console.log(moveX, moveY)
+                this.ele.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+            }
+            const onMouseUp = () => {
+                document.removeEventListener('mousemove', onMouseMove);
+            }
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        }
+
+        new DragAble('#drag1');
+        new DragAble('#btn');
+    </script>
+</body>
+
+</html>
