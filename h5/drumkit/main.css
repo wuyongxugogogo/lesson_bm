@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+html {
+  font-size: 10px;
+  background: url("http://img5.imgtn.bdimg.com/it/u=4040536830,1386667689&fm=26&gp=0.jpg") bottom center;
+  background-size: 100%;
+}
+.keys {
+  display: -webkit-flex;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.keys .key {
+  margin: 1rem;
+  border: 0.4rem solid #000;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  padding: 1rem 0.5rem;
+  width: 10rem;
+  text-align: center;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 0.5rem #000;
+  transition: all 0.07s ease;
+}
+.keys .key .div {
+  display: block;
+  font-size: 4rem;
+}
+.keys .key .sound {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: #ffc600;
+}
+.playing.key {
+  border: 4px solid #ff0;
+}
