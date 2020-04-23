@@ -1,0 +1,38 @@
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    const lis = document.querySelectorAll('li')
+    Array.prototype.map.call(lis,function(i){
+        console.log(i)
+    })
+
+    // 类似数组的对象
+    // 1：可以像数组一样，用数组[i] 取值
+    // 2：length
+    // 比如：arguments
+    function sum(){
+        // 参数的个数 也不确定有几个
+        console.log(arguments[0],arguments)
+        // 遍历类数组对象
+        // 1.借用array中的 forEach
+        // forEach arguments不能直接调用 需要借用
+        // call 让 forEach里的this 指向arguments
+        Array.prototype.forEach.call(arguments,function(num){
+            console.log(num);
+        })
+        // 2.Array.from() 方法从一个类似数组对象创建一个新的数组
+        // 新的数组直接用数组的方法遍历
+        const arr = Array.from(arguments);
+        arr.forEach(function(num){
+            console.log(num)
+        })
+    
+    }
+    sum(7,8,9,10)
+    // 静态方法不需要实例化就可以调用
+    // Array.from() 静态方法 
+    // Array.prototype.forEach 非静态方法
+</script>
