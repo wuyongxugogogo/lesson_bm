@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        /* parent元素为弹性容器 */
+        .parent{
+            width: 800px;
+            height: 800px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            /* 设置为弹性容器 */
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            /* 
+            设置换行 flex-wrap
+            nowrap:不换行默认值
+            wrap
+             */
+            flex-wrap: wrap;
+            /* 设置多行分布align-content
+            flex-start 多行内容往侧轴的开端靠拢
+            flex-end 往结束端靠拢
+            center 多行内容居中
+            space-between 平均分布，两边没有间距
+            space-around 平均分布，两边间距是中间的一半
+            space-evenly 平均分布，所有间距一样
+             */
+            align-content: space-evenly;
+        }
+        
+        .child{
+            width: 200px;
+            height: 200px;
+        }
+        .c1{
+            background-color: skyblue;
+        }
+        .c2{
+            background-color: orange;
+        }
+        .c3{
+            background-color: orchid;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child c1">
+            1
+        </div>
+        <div class="child c2">
+            2
+        </div>
+        <div class="child c3">
+            3
+        </div>
+        <div class="child c1">
+            1
+        </div>
+        <div class="child c2">
+            2
+        </div>
+        <div class="child c3">
+            3
+        </div>
+        <div class="child c1">
+            1
+        </div>
+        <div class="child c2">
+            2
+        </div>
+        <div class="child c3">
+            3
+        </div>
+        <div class="child c1">
+            1
+        </div>
+        <div class="child c2">
+            2
+        </div>
+        <div class="child c3">
+            3
+        </div>
+        
+    </div>
+</body>
+</html>

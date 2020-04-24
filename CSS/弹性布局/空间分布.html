@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 弹性布局剩余空间分布设置 -->
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+            display: flex;
+        }
+        /* 剩余空间分布设置
+        flex:1; 占据1份
+        flex:2; 占据2份
+         */
+        .left{
+            flex: 1;
+            background-color: cadetblue;
+        }
+        .main{
+            flex: 2;
+            background-color: chocolate;
+        }
+        .ad{
+            background-color: cornflowerblue;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        侧边栏是主要内容的一半
+        广告栏固定是200px
+
+        弹性布局剩余空间分布设置
+     -->
+    <div class="left">
+        <h1>侧边栏</h1>
+    </div>
+    <div class="main">
+        <h1>主要内容</h1>
+    </div>
+    <div class="ad">
+        <h1>有您的世界在哪里?</h1>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            width: 900px;
+            height: 600px;
+            border: 1px solid black;
+            display: flex;
+        }
+        .child{
+            width: 200px;
+            height: 200px;
+        }
+        /* 
+            子元素排序order
+            设置在子元素上，按照从小到大的顺序进行排序
+         */
+        .c1{
+            background-color: cornflowerblue;
+            order: 4;
+        }
+        .c2{
+            background-color: crimson;
+            order: 2;
+        }
+        .c3{
+            background-color: darkcyan;
+            order: 3;
+        }
+        .c4{
+            background-color: darkkhaki;
+            order: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child c1">1</div>
+        <div class="child c2">2</div>
+        <div class="child c3">3</div>
+        <div class="child c4">4</div>
+    </div>
+</body>
+</html>
