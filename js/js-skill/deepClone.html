@@ -1,0 +1,31 @@
+<script>
+    let obj1 = {
+        name: 'name',
+        sex: 'sex',
+        a: {
+            b:{
+                c:1
+            }
+        }
+    }
+    
+    // 1.只有一层 不用...
+    // 对象的一个循环
+    // for in
+
+    // 深拷贝 
+    function deepClone(obj) {
+        let res = {};
+        for (let key in obj) {
+            if(typeof obj[key] === 'object'){
+                res[key] = deepClone(obj[key])
+            }else{
+                res[key] = obj[key]
+            }
+        }
+        return res;
+    }
+    let obj2 = deepClone(obj1);
+    obj2.a.b.c = 20;
+    console.log(obj2,obj1)
+</script>

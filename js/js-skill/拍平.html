@@ -1,0 +1,18 @@
+<script>
+    let arr = [1,6,[2,[8,7]]];
+
+    function flat(arr) {
+        let res = [];
+        for (let i = 0; i < arr.length; i++) {
+            let ele = arr[i];
+            // ele 必须是个 基本数据类型
+            if(Array.isArray(ele)){
+                res = res.concat(flat(ele));
+            }else{
+                res = res.concat(ele);
+            }
+        }
+        return res;
+    }
+    console.log(flat(arr))
+</script>
