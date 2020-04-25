@@ -6,7 +6,7 @@
     <title>口碑界面</title>
     <style>
         *{margin: 0;padding: 0;}
-        .container{
+        .container-koubei{
             width: 100%;
             height: 100vh;
             background-color: #F6F6F6;
@@ -51,10 +51,172 @@
             text-align: center;
             padding-top: 5px;
         }
+        .menu{
+            width: 95%;
+            height: 25%;
+            margin: 0 auto;
+            margin-top: 10px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            align-content: center;
+            border-radius: 10px;
+        }
+        .menu-item{
+            width: 19%;
+            height: 40%;
+            font-size: 12px;
+            text-align: center;
+            color:darkgrey;
+        }
+        .menu-item img{
+            margin: 0 auto;
+            display: block;
+        }
+        .activity{
+            margin: 0 auto;
+            width: 95%;
+            height: 7%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .activity-item{
+            width: 32%;
+            background-color: white;
+            border-radius: 10px;
+            float: left;
+            margin-top: 5px;
+        }
+        .activity-item .word{
+            width: 50%;
+            height: 80%;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .activity-item .word h3{
+            font-size: 12px;
+            margin-top: 2px;
+        }
+        .activity-item .word span{
+            font-size: 8px;
+            color: darkgray;
+        }
+        .center-img{
+            width: 95%;
+            height: 13%;
+            margin: 0 auto;
+            margin-top: 10px;
+            background-image: url("images/center.jpg");
+            background-size: 100% 100%;
+            border-radius: 10px;
+        }
+        .bottom{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 7%;
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            text-align: center;
+            border-top: 1px solid darkgray;
+        }
+        .bottom-item{
+            width: 10%;
+        }
+        .bottom-item img{
+            height: 50%;
+            margin: 0 auto;
+            margin-top: 3px;
+            display: block;
+        }
+        .bottom-item span{
+            font-size: 13px;
+            color: darkgray;
+        }
+        .cheap-buy{
+            margin: 0 auto;
+            margin-top: 10px;
+            width: 95%;
+            border-radius: 10px;
+            height: 30%;
+            background-color: white;
+        }
+        .cheap-buy .buy-top{
+            width: 95%;
+            margin: 0 auto;
+            height: 30px;
+        }
+        .cheap-buy .buy-top .left{
+            float: left;
+            line-height: 30px;
+            font-size: 15px;
+            color: darkorange;
+            font-weight: bold;
+        }
+        .cheap-buy .buy-top .right{
+            float: right;
+            font-size: 10px;
+            color: darkgray;
+            line-height: 30px;
+        }
+        .cheap-buy .buy-wrapper{
+            width: 95%;
+            height: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .cheap-buy .buy-wrapper .buy-item{
+            width: 32%;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .cheap-buy .buy-wrapper .buy-item .img-box{
+            width: 100%;
+            height: 60%;
+        }
+        .cheap-buy .buy-wrapper .buy-item .img-box img{
+            width: 100%;
+            height: 100%;
+        }
+        .cheap-buy .buy-wrapper .buy-item .word-box{
+            width: 90%;
+            height: 40%;
+            margin: 0 auto;
+        }
+        .cheap-buy .buy-wrapper .buy-item .word-box .foodname{
+            color: black;
+            font-size: 12px;
+            display:block;
+            margin-top: 5px;
+            /* 超出部分用...显示 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .cheap-buy .buy-wrapper .buy-item .word-box .foodprice{
+            color: red;
+            font-size: 13px;
+            display: block;
+            height: 20%;
+        }
+        .cheap-buy .buy-wrapper .buy-item .word-box .foodprice .line-through{
+            color: darkgray;
+            font-size: 8px;
+            /* 划去价格 */
+            text-decoration: line-through;
+        }
+        .cheap-buy .buy-wrapper .buy-item .word-box .foodstore{
+            color: darkgray;
+            font-size: 8px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container-koubei">
         <div class="top">
             <div class="location">南昌</div>
             <div class="search">
@@ -70,23 +232,129 @@
                 <img src="./images/美食.png" alt="">
                 <span>美食</span>
             </div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
+            <div class="menu-item">
+                <img src="./images/外卖.png" alt="">
+                <span>外卖</span>
+            </div>
+            <div class="menu-item">
+                <img src="./images/商店.png" alt="">
+                <span>商超到家</span>
+            </div>
+            <div class="menu-item">
+                <img src="./images/足迹.png" alt="">
+                <span>休闲娱乐</span>
+            </div>
+            <div class="menu-item">
+                <img src="./images/美发.png" alt="">
+                <span>丽人/美发</span>
+            </div>
+            <div class="menu-item">
+                <img src="./images/饮品.png" alt="">
+                <span>甜品饮品</span>
+            </div>
+            <div class="menu-item">
+                <img src="./images/水果.png" alt="">
+                <span>水果外卖</span>
+            </div>
+            <div class="menu-item">
+                <img src="./images/_周边游.png" alt="">
+                <span>周边游</span>
+            </div>
+            <div class="menu-item">
+                <img src="./images/汉堡.png" alt="">
+                <span>汉堡披萨</span>
+            </div>
+            <div class="menu-item">
+                <img src="./images/炸串.png" alt="">
+                <span>炸鸡炸串</span>
+            </div>
         </div>
-        <div class="bottom">
-            <div class="bottom-item"></div>
-            <div class="bottom-item"></div>
-            <div class="bottom-item"></div>
-            <div class="bottom-item"></div>
-            <div class="bottom-item"></div>
+        <div class="activity">
+            <div class="activity-item">
+                <div class="word">
+                    <h3>口碑农场</h3>
+                    <span>0元吃美食</span>
+                </div>
+                <img src="images/汉堡1.png" alt="">
+            </div>
+            <div class="activity-item">
+                <div class="word">
+                    <h3>奖励金</h3>
+                    <span>吃喝玩乐</span>
+                </div>
+                <img src="images/甜甜圈.png" alt="">
+            </div>
+            <div class="activity-item">
+                <div class="word">
+                    <h3>口碑直播</h3>
+                    <span>限时抽奖</span>
+                </div>
+                <img src="images/live.png" alt="">
+            </div>
+        </div>
+        <div class="center-img">
+        </div>
+        <div class="cheap-buy">
+            <div class="buy-top">
+                <span class="left">超值抢购</span>
+                <span class="right">更多</span>
+            </div>
+            <div class="buy-wrapper">
+                <div class="buy-item">
+                    <div class="img-box">
+                        <img src="images/薯条.jpg" alt="">
+                    </div>
+                    <div class="word-box">
+                        <span class="foodname">薯条 (烧烤味) 一盒</span>
+                        <span class="foodprice">￥4.89 <span class="line-through">￥9.8</span></span>
+                        <span class="foodstore">华莱士</span>
+                    </div>
+                </div>
+                <div class="buy-item">
+                    <div class="img-box">
+                        <img src="images/套餐.jpg" alt="">
+                    </div>
+                    <div class="word-box">
+                        <span class="foodname">2份香酥双鸡堡单人餐【限时5折】</span>
+                        <span class="foodprice">￥34.5 <span class="line-through">￥69</span></span>
+                        <span class="foodstore">德克士dicos</span>
+                    </div>
+                </div>
+                <div class="buy-item">
+                    <div class="img-box">
+                        <img src="images/鸡翅.jpg" alt="">
+                    </div>
+                    <div class="word-box">
+                        <span class="foodname">脆皮香辣鸡翅 两份购五折</span>
+                        <span class="foodprice">￥7.99 <span class="line-through">￥15.98</span></span>
+                        <span class="foodstore">华莱士</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="bottom">
+        <div class="bottom-item">
+            <img src="images/支付宝.png" alt="">
+            <span>首页</span>
+        </div>
+        <div class="bottom-item">
+            <img src="images/理财.png" alt="">
+            <span>理财</span>
+        </div>
+        <div class="bottom-item">
+            <img src="images/口碑1.png" alt="">
+            <span>口碑</span>
+        </div>
+        <div class="bottom-item">
+            <img src="images/朋友.png" alt="">
+            <span>朋友</span>
+        </div>
+        <div class="bottom-item">
+            <img src="images/我的.png" alt="">
+            <span>我的</span>
+        </div>
+    </div>
+    
 </body>
 </html>
