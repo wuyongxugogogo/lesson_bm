@@ -28,27 +28,52 @@
         // },false)
 
         // 封装
+        // 1. html str `` 添加到页面
+        // 2. 还要在他上面添加事件
+        const createDOMFromString = (domString) => {
+            const oDiv = document.createElement('div'); // dom 节点
+            oDiv.innerHTML = domString;
+            return oDiv;
+        }
         class LikeButton {
-            constructor(){
-                this.state = { isLiked: false }
+            constructor() {
+                this.state = { isLiked: true }
             }
             render() {
-                // 事件监听 ？？
-
-                return `
-                    <button id='like-btn'>
-                        <span class='link-text'>${this.state.isLiked?'取消':'点赞'}</span>
-                    </button>
-                `
+                
+                this.el = createDOMFromString(`
+                <button id = "like-btn" >
+                    <span class="link-text">点赞</span>
+                </button>
+                `)
+                this.el.addEventListener('click',this.changeLikeText.bind(this),false)
+                return this.el
+            }
+            changeLikeText(){
+                console.log(this);
+                this.state.isLiked = !this.state.isLiked;
+                const likeText = this.el.querySelector('.link-text');
+                likeText.innerHTML = this.state.isLiked?'点赞':'取消';
             }
         }
-
         const wrapper = document.querySelector('.wrapper');
         const likeButton = new LikeButton();
-        wrapper.innerHTML = likeButton.render();
+        wrapper.appendChild(likeButton.render())
+        
+        
+        
+
+        
+        
+        
+
+        
+
+
+
         // 复用
-        const likeButton2 = new LikeButton();
-        wrapper.innerHTML += likeButton2.render();
+        // const likeButton2 = new LikeButton();
+        // wrapper.innerHTML += likeButton2.render();
     </script>
 </body>
 

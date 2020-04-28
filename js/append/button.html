@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- DOM 挂载点 -->
+    <div class="wrapper"></div>
+    <script>
+        // 中央空调
+        const createDOMFromString = (domString) => {
+            const oDiv = document.createElement('div'); // dom 节点
+            oDiv.innerHTML = domString; 
+            return oDiv;
+        }
+        // 设计这个类
+        class LikeButton{
+            constructor(){
+                // 申明属性
+                // 状态 喜欢或不喜欢
+                this.state = { // JSON
+                    isliked: false  //bool
+                }
+            }
+            render(){
+                this.el = createDOMFromString(`
+                <button id = "like-btn" >
+                    <span class="link-text">${this.state.isliked?'取消':'点赞'}</span>
+                </button>
+                `);
+                this.el.addEventListener('click',this.changeLikeText.bind(this),false);
+                return this.el
+            }
+            changeLikeText(){
+                this.setState({
+                    isliked: !this.state.isliked
+                })
+            }
+            setState(state){
+                // console.log(state);
+                const oldEl = this.el;
+                const parent = this.el.parentNode;
+                console.log(parent);
+                this.state = state; // 数据属性
+                this.el = this.render(); // 再渲染一下
+                parent.insertBefore(this.el,oldEl);// 把新按钮插入旧按钮前面
+                parent.removeChild(oldEl);// 删除旧按钮
+            }
+        }
+        const wrapper = document.querySelector('.wrapper');
+        const likeButton = new LikeButton();
+        wrapper.appendChild(likeButton.render());
+        // 点赞功能组件
+    </script>
+</body>
+</html>
