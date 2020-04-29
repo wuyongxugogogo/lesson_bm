@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易云音乐</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <header>
+        <div class="top">
+            <span class="iconfont menu">&#xe65c;</span>
+            <span class="title">网易云音乐</span>
+            <span class="iconfont search">&#xe62b;</span>
+        </div>
+        <div class="tabbar">
+            <a href="/recommend" class="selected">
+                <div class="item"><span>推荐</span></div>
+            </a>
+            <a href="/singers">
+                <div class="item"><span>歌手</span></div>
+            </a>
+            <a href="/rank">
+                <div class="item"><span>排行榜</span></div>
+            </a>
+        </div>
+    </header>
+    <div id="recommend_content">recommend_content</div>
+    <div id="singers_content" style="display: none;">singers_content</div>
+    <div id="rank_content" style="display: none;">rank_content</div>
+    <script src="./common.js"></script>
+</body>
+</html>
