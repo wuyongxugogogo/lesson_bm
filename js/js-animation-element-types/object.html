@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // object 对象字面量
+        let obj = {
+            name:'lc',
+            age:18
+        }
+        // 增 删 改 查
+        delete obj.name;
+        obj.school = 'ECUT';
+        console.log(obj);
+        // 赋值 操作：指向同一块内存地址
+        let obj1 = obj;
+        obj1.homeTown = 'jx';// 同时obj 也会增加homeTown属性
+        console.log(obj1);
+
+        // 基本数据类型
+        // 赋值互不相关
+        let str1 = 'ECUT';
+        let str2 = str1;
+        str2 = 'ECIT';
+        console.log(str1,str2);
+    </script>
+</body>
+</html>

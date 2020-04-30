@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+        }
+
+        .wrapper {
+            margin-left: auto;
+            margin-right: auto;
+            /* 这个方法水平居中要有width/max-width */
+            max-width: 500px;
+            line-height: 2;
+            /* 不加px是倍数 */
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            margin: 100px 0;
+        }
+
+        .menu a {
+            margin: 0 20px;
+        }
+
+        body {
+            background: linear-gradient(135deg, #3a41e0, #df854e);
+            height: 100vh;
+        }
+        .bgc{
+            background-color: white;
+            border-radius: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 0;
+            transition: all 0.3s;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- html 语义化 -->
+    <nav>
+        <ul class="menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">Order Status</a></li>
+            <li><a href="">Tweets</a></li>
+            <li><a href="">Read Our History</a></li>
+            <li><a href="">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="wrapper">
+        <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a>
+            unde natus
+            necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
+        <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a
+                href="">quaerat</a> cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
+        <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a
+                href="">veritatis</a> ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.
+        </p>
+        <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut
+            consequatur
+            eveniet sunt quam provident sapiente dicta neque quod.</p>
+        <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima,
+            maxime <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a>
+            quas!</p>
+    </div>
+    <script>
+        // 怎么知道 有没有移动到关键词上面？
+        // mouseEnter
+        // createElement => <div class="bgc"></div>
+        const highLight = document.createElement('div');
+        highLight.classList.add('bgc');
+        const allLinks = document.querySelectorAll('a');
+        // 插到页面上了
+        document.body.appendChild(highLight);
+        allLinks.forEach(function(aNode){
+            aNode.addEventListener('mouseenter',function(event){
+                // event 事件对象
+                const size = aNode.getBoundingClientRect();
+                // console.log(size)
+                highLight.style.width = size.width + 'px';
+                highLight.style.height = size.height + 'px';
+                
+                highLight.style.transform = `translateX(${size.left}px) translateY(${size.top}px)`
+
+            })
+        })
+    </script>
+</body>
+
+</html>
