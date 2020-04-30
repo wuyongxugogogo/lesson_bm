@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            /* view width */
+            /* view height */
+            width: 100vw;
+            height: 100vh;
+        }
+
+        em {
+            color: #df493a;
+            font-style: normal;
+        }
+
+        p {
+            transform: translateY(6px);
+            opacity: 0;
+            /* transition: opacity 1.2s, transform 1s; */
+            /* transition: all 1s; */
+        }
+
+        /* @keyframes */
+        .swiper-slide-active p {
+            /* 代表在 第一屏 让他们显示出来 */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 1.2s, transform 1s;
+            
+        }
+
+        p:nth-child(1) {
+            /* animation-delay */
+            transition-delay: 0.2s;
+        }
+
+        p:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+
+        p:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+
+        p:nth-child(4) {
+            transition-delay: 0.5s;
+        }
+
+        p:nth-child(5) {
+            transition-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide-active">
+                <p>
+                    <em>11月1日</em>
+                </p>
+                <p>大概是很特别的一天</p>
+                <p>这一天里</p>
+                <p>TA把Richard Clayderma...的 <em>《梦中的婚礼》</em></p>
+                <p>反复听了 <em>10次</em></p>
+            </div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+        </div>
+    </div>
+    <!-- Swiper -->
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical', // 垂直切换选项
+        })
+
+    </script>
+</body>
+
+</html>
