@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网易云音乐</title>
     <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <link rel="stylesheet" href="./main.css">
 </head>
+
 <body>
     <header>
         <div class="top">
@@ -27,9 +30,29 @@
             </a>
         </div>
     </header>
-    <div id="recommend_content">recommend_content</div>
+    <div id="recommend_content">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- <div class="swiper-slide">123</div>
+                <div class="swiper-slide">13</div>
+                <div class="swiper-slide">564</div> -->
+
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 如果需要导航按钮 -->
+            <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
+
+            <!-- 如果需要滚动条 -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+        </div>
+    </div>
     <div id="singers_content" style="display: none;">singers_content</div>
     <div id="rank_content" style="display: none;">rank_content</div>
     <script src="./common.js"></script>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
 </body>
+
 </html>
