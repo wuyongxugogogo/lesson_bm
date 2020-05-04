@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+</head>
+<body>
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <script>
+        /** @type {HTMLCanvasElement} */
+        // 常量
+        const CANVAS_BORDER_COLOR = 'black';
+        const CANVAS_BACKGROUND_COLOR = 'white';
+
+        // 获取 canvas 元素
+        var gameCanvas = document.getElementById('gameCanvas');
+        // 返回一个二维绘图上下文
+        var ctx = gameCanvas.getContext('2d');
+        // 选择画布的背景颜色
+        ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
+        // 选择画布边框颜色
+        ctx.strokestyle = CANVAS_BORDER_COLOR;
+        // 绘制一个“实心”的矩形来覆盖整个画布
+        ctx.fillRect(0,0,gameCanvas.width,gameCanvas.height);
+        // 绘制画布的边框
+        ctx.strokeRect(0,0,gameCanvas.width,gameCanvas.height);
+        
+    </script>
+</body>
+</html>
