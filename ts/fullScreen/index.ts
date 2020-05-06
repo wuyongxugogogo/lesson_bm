@@ -15,41 +15,41 @@ let a: any;   // 不清楚类型： 用户输入
 // null, undefined
 let b: null = null;
 // never
-function test(): never {
-  // while(true) {
-  // }
-  throw new Error('error');
-}
+// function test(): never {
+//     // while(true) {
+//     // }
+//     throw new Error('error');
+// }
 
 // 联合类型
 // 定义一个类型: 进入全屏的时候 调用就是其中之一
 type RFSmethods = 'requestFullscreen' | 'webkitRequestFullScreen' | 'mozRequestFullScreen' |
-  'msRequestFullscreen'
+    'msRequestFullscreen'
 // dom 没有帮我定义 
 interface Element {
-  requestFullscreen(): any,
-  webkitRequestFullScreen(): any,
-  mozRequestFullScreen(): any,
-  msRequestFullscreen(): any
+    requestFullscreen(): any,
+    webkitRequestFullScreen(): any,
+    mozRequestFullScreen(): any,
+    msRequestFullscreen(): any
 }
 // 变量
 let RFS_METHOD: RFSmethods
 if ('requestFullscreen' in document.body) {
-  RFS_METHOD = 'requestFullscreen';
+    RFS_METHOD = 'requestFullscreen';
 } else if ('webkitRequestFullScreen' in document.body) {
-  RFS_METHOD = 'webkitRequestFullScreen'
+    RFS_METHOD = 'webkitRequestFullScreen'
 } else if ('mozRequestFullScreen' in document.body) {
-  RFS_METHOD = 'mozRequestFullScreen'
+    RFS_METHOD = 'mozRequestFullScreen'
 } else if ('msRequestFullscreen' in document.body) {
-  RFS_METHOD = 'msRequestFullscreen'
+    RFS_METHOD = 'msRequestFullscreen'
 }
 // object 
 function beFull(el: Element) {
-  // 检查兼容性 
-  // RFS_METHOD 4 个 中的一个
-  // el.requestFullscreen();
-  console.log(el, RFS_METHOD);
-  el[RFS_METHOD]();
+    // 检查兼容性 
+    // RFS_METHOD 4 个 中的一个
+    // el.requestFullscreen();
+    console.log(el, RFS_METHOD);
+    el[RFS_METHOD]();
 }
 // ts 结合 原生 html dom
 // ts 结合 Node
@@ -59,14 +59,14 @@ function beFull(el: Element) {
 const btn = document.getElementById('btn');
 const box = document.querySelector('.box');
 if (btn) {
-  btn.addEventListener('click', function () {
-    // box.requestFullscreen();
-    // 是不是 Element 的实例 ？？
-    // Element 是内置的一个类
-    // html 标签都是 Element 实例
-    // box ： element | null 
-    if (box instanceof Element) {
-      beFull(box);
-    }
-  })
+    btn.addEventListener('click', function () {
+        // box.requestFullscreen();
+        // 是不是 Element 的实例 ？？
+        // Element 是内置的一个类
+        // html 标签都是 Element 实例
+        // box ： element | null 
+        if (box instanceof Element) {
+            beFull(box);
+        }
+    })
 }

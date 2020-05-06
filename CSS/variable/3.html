@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .wrap{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header,footer{
+            /* flex-grow flex-shrink flex-basis */
+            flex: 0 0 50px;
+            background-color: red;
+        }
+        .content{
+            display: flex;/* 再开辟新的空间 */
+            flex-grow: 1;
+        }
+        .main{
+            flex: 1;
+        }
+        .nav,.ads{
+            flex: 0 0 100px;
+            background-color:green;
+        }
+        .nav{
+            order: -1;
+        }
+    </style>
+</head>
+<body class="wrap">
+    <!-- 三栏布局 面试常考  -->
+    <header>头部</header>
+    <div class="content">
+        <!-- main 写在第一个位置? 内容优先加载 -->
+        <main class="main">内容区</main>
+        <nav class="nav">侧边导航</nav>
+        <aside class="ads">侧边栏</aside>
+    </div>
+    <footer>底栏</footer>
+</body>
+</html>

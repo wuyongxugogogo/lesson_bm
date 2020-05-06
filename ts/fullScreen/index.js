@@ -19,12 +19,6 @@ var a; // 不清楚类型： 用户输入
 // void  空
 // null, undefined
 var b = null;
-// never
-function test() {
-    // while(true) {
-    // }
-    throw new Error('error');
-}
 // 变量
 var RFS_METHOD;
 if ('requestFullscreen' in document.body) {
