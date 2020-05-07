@@ -28,6 +28,25 @@
             background-color: var(--bg-color);
             padding: calc(var(--base-size) * 1px);
         }
+        /* css 选择器里 @ 竖屏 480 手机 ipad 1024*768
+          pc  1100 +
+          巨屏 1400+
+         */
+         @media (max-width: 480px){
+             :root{
+                 --base-size: 8;
+             }
+         }
+         @media only screen and (min-width: 1200px){
+             :root{
+                 --base-size: 20;
+             }
+         }
+         @media only screen and (max-width: 1024px) and (min-width: 768px){
+             :root{
+                 --base-size:15;
+             }
+         }
     </style>
 </head>
 
@@ -35,12 +54,12 @@
     <div class="box"></div>
     <script>
         // PC端 移动端 跳转
-        var is_mobi = navigator.userAgent.toLowerCase().match(/(ipod|iphone|android|coolpad|mmp|smartphone|midp|wap|xoom|symbian|j2me|blackberry|wince)/i) != null;
-        if (is_mobi) {
-            document.documentElement.style.setProperty('--base-size', 8);
-        } else {
-            document.documentElement.style.setProperty('--base-size', 10);
-        }
+        // var is_mobi = navigator.userAgent.toLowerCase().match(/(ipod|iphone|android|coolpad|mmp|smartphone|midp|wap|xoom|symbian|j2me|blackberry|wince)/i) != null;
+        // if (is_mobi) {
+        //     document.documentElement.style.setProperty('--base-size', 8);
+        // } else {
+        //     document.documentElement.style.setProperty('--base-size', 10);
+        // }
     </script>
 </body>
 
