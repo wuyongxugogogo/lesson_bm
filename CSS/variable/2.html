@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./box.css">
     <style>
-        *{margin: 0;padding: 0;}
-        :root{
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
             --bg-color: green;
             --base-size: 10;
         }
-        .box{
+
+        .box {
             /* 占据90%-10px 宽 */
             /* 减号左右必须要空格 */
             /* width: calc(90% - 10px);
@@ -24,7 +30,18 @@
         }
     </style>
 </head>
+
 <body>
     <div class="box"></div>
+    <script>
+        // PC端 移动端 跳转
+        var is_mobi = navigator.userAgent.toLowerCase().match(/(ipod|iphone|android|coolpad|mmp|smartphone|midp|wap|xoom|symbian|j2me|blackberry|wince)/i) != null;
+        if (is_mobi) {
+            document.documentElement.style.setProperty('--base-size', 8);
+        } else {
+            document.documentElement.style.setProperty('--base-size', 10);
+        }
+    </script>
 </body>
+
 </html>
