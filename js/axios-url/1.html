@@ -1,0 +1,19 @@
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    // http://neteasecloudmusicapi.zhaoboy.com/search?keywords=海阔天空
+    // 1.原生，自己手动拼接 ? 后面字符串
+    // 2.axios ? 变成了一个对象{}
+    // {} 灵活 操作对象 是比字符串灵活的
+    // axios 第三方 基于 XMLhttprequest 库
+    let obj = {
+        keywords: '海阔天空'
+    }
+    axios({
+        method: 'get',
+        url: 'http://neteasecloudmusicapi.zhaoboy.com/search',
+        params: obj
+    })
+    .then(function(res){
+        console.log(res)
+    })
+</script>

@@ -1,0 +1,77 @@
+<script>
+    // 1：key value 编码一下 ？
+    // 2：传递数组 传递不合法值
+    // 3：# 后面是不会传输给后端的 如果 url 里面存在 # 把 #后面内容丢掉
+    // 安全性 有那么一些特殊字符 后端 sql 语句 威胁
+    // 传输 传输每个设备 编码规则
+    // 浏览器会自动帮你编码    
+    // http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA
+    function encode(str) {
+        return encodeURIComponent(str)
+            .replace('%5B', '[').replace('%5D', ']')  // 数组 合法
+            ;
+    }
+    function buildUrl(url, params) {
+        let parts = [];
+        // 对 key value 统一变成一个格式
+        Object.keys(params).forEach(function (key) {
+            let value = params[key]
+            if (value === null || typeof value === 'undefined') {
+                return;
+            }
+            if (Array.isArray(value)) {
+                key += '[]';
+                // c: [1, 2, 3] => c[]=1&c[]=2&c[]=3 是不是要循环一下 value
+                // 
+            } else {
+                // c: 123
+                // key = c
+                value = [value];
+            }
+            console.log(key, value);
+            // 一定数组
+            // 统一 都可以循环
+            // 把 value 里面里面的每一项 追加到 key 后面 c[]=1 c[]=2 c[]=3
+            // else c=123
+            // 把 value 里面里面的每一项 追加到 key 后面
+            value.forEach(val => {
+                // key
+                let part = `${encode(key)}=${encode(val)}`
+                //  1: keywords='海阔天空' type='all' query='js'
+                //  2: & join
+                parts.push(part);
+                console.log(part);
+            })
+        })
+        console.log(parts);
+        console.log(parts.join('&'));
+        // 
+        const hashIndex = url.indexOf('#');
+        // 如果存在 返回 #所在位置 不在 返回 -1
+        if (hashIndex !== -1) {
+            // 找到 # 位置 从 0 ~ # 位置 截取下来
+            url = url.slice(0, hashIndex);
+        }
+        url += '?' + parts.join('&');
+        return url;
+    }
+    // url 本身存在 url 怎么处理它
+    // 现在存在 两个 ？
+    let url = buildUrl('http://neteasecloudmusicapi.zhaoboy.com/search?a=1', {
+        keywords: '海阔天空',
+        type: 'all',
+        query: 'js',
+        a: null,
+        b: undefined,
+        c: [1, 2, 3]
+    })
+    console.log(url);
+    // c: [1,2,3]   对 value 循环 c[]=1&C[]=1&c[]=3
+    // query: ['js'], 直接加到 key
+    // 
+    // 都变成 数组
+    // 都循环把 value 里面每一项 追接 key 后面
+    // c[]=1 c[]=2 c[]=3
+    // query=js
+
+</script>
