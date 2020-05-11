@@ -29,3 +29,21 @@
 - 建立连接后，会发送一个GET请求行(request method GET url / )的信息
 - 服务器接收到请求信息后，读取对应的HTML文件，并将数据以ASC返回给用户浏览器
 - 断开连接
+
+
+
+- http  req + res  可以完成一次请求？
+  HTTP协议 基于请求应答模型
+  ctx.req ctx.res
+  
+- req  res  之间是什么关系？
+  n : 1  node 天生适合高并发(异步)
+  HTTP 网络通信协议  TCP/IP  7层
+  建立一个通信管道(传输控制协议)，stream
+  GET / 请求行
+  关闭 断开连接， HTTP可以服务于更多的用户
+  释放服务器内存
+
+- writeHead 在做什么事情
+
+- head  在http是什么？
