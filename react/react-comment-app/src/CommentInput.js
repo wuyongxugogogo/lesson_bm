@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 class CommentInput extends Component {
-   constructor(){//构造函数
+   constructor() {//构造函数
       super(); // 父类的构造函数先执行 必须的
       this.state = {  // 状态
-         username:'',
-         content:''
+         username: '',
+         content: ''
       }
    }
    render() {
       // react  jsx  { js 动态区域}
-      let {username, content} = this.state;
+      let { username, content } = this.state;
       return (
          <div className="comment-input">
             <div className="comment-field">
@@ -25,7 +25,7 @@ class CommentInput extends Component {
                <span className="comment-field-name">评论内容</span>
                <div className="comment-field-input">
                   <textarea value={content}
-                  onChange={this.handleContentChange.bind(this)}>
+                     onChange={this.handleContentChange.bind(this)}>
                   </textarea>
                </div>
             </div>
@@ -36,23 +36,24 @@ class CommentInput extends Component {
       )
    }
 
-   handleUsernameChange(event){
+   handleUsernameChange(event) {
       // console.log(event);
       this.setState({
          username: event.target.value
       })
    }
 
-   handleContentChange(event){
+   handleContentChange(event) {
       this.setState({
-         content:event.target.value
+         content: event.target.value
       })
    }
 
-   handleSubmit(){
+   handleSubmit() {
       // console.log(this.state)
-      const {username,content}= this.state;
-      this.props.onSubmit({username,content});
+      const { username, content } = this.state;
+      const { onSubmit } = this.props;
+      onSubmit({ username, content }); // 传入username，content去app
       this.setState({
          content: ''
       })
