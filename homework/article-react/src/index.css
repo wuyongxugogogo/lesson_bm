@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    margin: 50px auto;
+    border: 1px solid black;
+    width: 400px;
+}
+.switch{
+    width: 100%;
+    border-bottom: 1px solid black;
+    line-height: 50px;
+}
+.switch section{
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.active{
+    color: blue;
+    font-weight: bold;
+}
+
+
