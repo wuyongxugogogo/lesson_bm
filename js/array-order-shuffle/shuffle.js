@@ -4,6 +4,7 @@
 // 从未洗牌的区间之内随机取出一个数 b
 // a b 交换
 function shuffle(arr) {
+    let arr = [...arr];
     let len = arr.length;
     for(let i = 0; i < len; i++){
         let idx = Math.floor(Math.random() * (len-i));
