@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import TabController from './TabController';
 
 class Switch extends Component{
-    constructor(){
-        super();
-        this.state={
-            currentIndex:0
-        }
-    }
     render(){
+        let {classnames} = this.props;
+        console.log(classnames)
         return(
-            <TabController>
-                <section name='hot'>热门</section>
-                <section name='latest'>最新</section>
-                <section name='ranklist'>热榜</section>
-            </TabController>
+            <div className='Tabs'>
+                <div className={classnames[0]} onClick={this.click.bind(this,0)}>热门</div>
+                <div className={classnames[1]} onClick={this.click.bind(this,1)}>最新</div>
+                <div className={classnames[2]} onClick={this.click.bind(this,2)}>榜单</div>
+            </div>
         )
+    }
+    click(index){
+        this.props.change(index);
     }
 }
 
