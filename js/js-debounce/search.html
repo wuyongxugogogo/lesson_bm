@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="search">
+    <input type="text" id="search1">
+    <script>
+        const search = document.getElementById('search');
+        let timeout;
+        function handlesearch(event) {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+            timeout = setTimeout(() => {
+                console.log(event.target.value)
+            }, 500)
+            // console.log(event.target.value)
+            // jay 这个词
+            // j ja jay 三次请求
+            // 等用户输入 jay 完毕了 再去请求
+            // 防抖
+            // j
+            // a
+            // y
+            // 用户连续输入就会连续触发 input ，处于输入中，没必要请求
+            // 输完之后 input 没触发了，等500ms之后 用户不触发 input 之后请求
+            // 等 500ms
+        }
+        // setTimeout
+        // onChange
+        search.addEventListener('input', handlesearch)
+
+        let timeout1;
+        let handlemousemove = function (event) {
+            if (timeout1) { clearTimeout(timeout1) }
+            timeout1 = setTimeout(() => {
+                console.log('handlemousemove')
+            }, 500)
+        }
+        window.addEventListener('mousemove', handlemousemove)
+
+        // 封装
+        // 防抖：
+        // 1: let timeout
+        // 2: if(timeout) clear
+        // 3: timeout = setTimeout
+        // debounce 之内
+        // func 没有防抖功能
+        function debounce(func, wait) {
+            let timeout;
+            // 具有防抖功能
+            return function(event) {
+                if (timeout) {
+                    clearTimeout(timeout)
+                }
+                timeout = setTimeout(() => {
+                    // 需要实现什么功能
+                    func.call(this,event)
+                }, wait)
+            }
+        }
+        const search1 = document.getElementById('search1');
+        search1.addEventListener('input',debounce(function(e){
+            console.log(this)
+            console.log(e.target.value)
+        },500))
+    </script>
+</body>
+
+</html>
