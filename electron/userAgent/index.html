@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <script>
+      var isMobile = {
+         Android: function () {
+            return navigator.userAgent.match(/Android/i);
+         },
+         BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+         },
+         iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+         },
+         Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+         },
+         Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+         },
+         any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+         },
+         orientation: function () {
+            return window.neworientation.current;
+         }
+      };
+
+
+      if (isMobile.any()) alert('Mobile');
+      window.addEventListener('orientationchange', function () {
+         if (window.neworientation.current === 'portrait') {
+            document.getElementById("body").style.background = "red";
+         } else {
+            document.getElementById("body").style.background = "blue";
+         }
+      }, false);
+   </script>
+</body>
+
+</html>
