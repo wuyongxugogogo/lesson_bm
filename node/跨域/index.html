@@ -1,0 +1,22 @@
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    // 接口 api
+    // js 写入cookie
+    // withCredentials axios 语法
+    // 原生 xmlhttprequest
+    // xmlhttprequest.withCredentials
+    document.cookie = 'abc=123';
+    axios({
+        withCredentials:true,
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        url:'http://localhost:9090/api',
+        method:'POST',
+        data:{
+            username:'123',
+            pwd:789
+        }
+    })
+    .then(res => {
+        console.log(res);
+    })
+</script>
