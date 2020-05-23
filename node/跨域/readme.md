@@ -24,3 +24,15 @@ Content-Type:
 跨域直接发出请求
 
 ## 非简单请求
+- OPTIONS preflight
+- POST
+
+## JSONP
+不同 xhr fetch, 不受跨域限制
+img
+link
+script
+
+借助了 script
+
+1. jsonp 后端给你返回的是什么
