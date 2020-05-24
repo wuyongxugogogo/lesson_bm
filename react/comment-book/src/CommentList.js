@@ -5,7 +5,8 @@ import Comment from './Comment'
 
 class CommentList extends Component {
   static propTypes = { // 检查类型
-    comments: PropTypes.array
+    comments: PropTypes.array,
+    onDeleteComment: PropTypes.func
   }
 
 
@@ -13,6 +14,11 @@ class CommentList extends Component {
     comments: []
   }
 
+  handleDeleteComment(index) {
+    if (this.props.onDeleteComment) {
+      this.props.onDeleteComment(index)
+    }
+  }
 
   render() {
     return (
@@ -22,7 +28,7 @@ class CommentList extends Component {
             comment={comment}
             key={i}
             index={i}
-            />
+            onDeleteComment={this.handleDeleteComment.bind(this)} />
         )}
       </div>
     )

@@ -5,7 +5,7 @@ import CommentList from './CommentList'
 
 
 class CommentApp extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       comments: []  /*数据状态 父组件 数据统一  一致性 */
@@ -13,12 +13,12 @@ class CommentApp extends Component {
   }
 
 
-  componentWillMount () {
+  componentWillMount() {
     this._loadComments()
   }
 
 
-  _loadComments () {
+  _loadComments() {
     let comments = localStorage.getItem('comments')
     if (comments) {
       comments = JSON.parse(comments)
@@ -27,22 +27,28 @@ class CommentApp extends Component {
   }
 
 
-  _saveComments (comments) {
+  _saveComments(comments) {
     localStorage.setItem('comments', JSON.stringify(comments))
   }
 
 
-  handleSubmitComment (comment) {
+  handleSubmitComment(comment) {
     // console.log(comment);
     if (!comment) return
     if (!comment.username) return alert('请输入用户名')
     if (!comment.content) return alert('请输入评论内容')
     const comments = this.state.comments // old state
-    comments.push(comment)
+    comments.unshift(comment)  // 最新评论添加在第一位
     this.setState({ comments })
     this._saveComments(comments)
   }
 
+  handleDeleteComment(index) {
+    const comments = this.state.comments
+    comments.splice(index, 1)
+    this.setState({ comments })
+    this._saveComments(comments)
+  }
 
 
   render() {
@@ -51,6 +57,7 @@ class CommentApp extends Component {
         <CommentInput onSubmit={this.handleSubmitComment.bind(this)} />
         <CommentList
           comments={this.state.comments}
+          onDeleteComment={this.handleDeleteComment.bind(this)}
         />
       </div>
     )
