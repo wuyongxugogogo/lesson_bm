@@ -14,7 +14,7 @@ https.get('https://movie.douban.com/top250',function(res){
     })
     // 拼接完成
     res.on('end',function(){
-        // console.log(html);
+        console.log(html);
         const $ = cheerio.load(html);
         let allFilms = [];
         $('li .item').each(function(){

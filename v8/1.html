@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // JavaScript 仅提升声明，而不提升初始化。如果你先使用的变量，再声明并初始化它，变量的值将是 undefined。以下两个示例演示了相同的行为。
+
+        // Example 1 - only y is hoisted
+        var x = 1;                 // 声明 + 初始化 x
+        console.log(x + " " + y);  // '1 undefined'
+        var y = 2;                 // 声明 + 初始化 y
+
+        // Example 2 - Hoists
+        var num1 = 3;                   // Declare and initialize num1
+        num2 = 4;                       // Initialize num2
+        console.log(num1 + " " + num2); //'3 4'
+        var num2;                       // Declare num2 for hoisting
+
+        // Example 3 - Hoists
+        a = 'Cran';              // Initialize a
+        b = 'berry';             // Initialize b
+        console.log(a + "" + b); // 'Cranberry'
+        var a, b;                // Declare both a & b for hoisting
+    </script>
+</body>
+
+</html>
