@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="">
+  <script></script>
+  <style>
+    div {
+      font-size: 12px;
+      display: block;
+      line-height: 200;
+      float: left;
+    }
+    span {
+      font-size: 20px;
+      display: flex;
+    }
+    #id {
+      color: red;
+    }
+    .cls {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- props: propertys -->
+  <div id="id" class="cls"></div>
+  <span></span>
+  <script>
+    const treeDataResult = [
+      {
+        title: "0-0",
+        jobId: "0-0",
+        children: [
+          {
+            title: "0-0-0",
+            jobId: "0-0-0",
+            children: [
+              { title: "0-0-0-0", key: "0-0-0-0",
+                children: [
+                  {a: 1}
+                ]
+              },
+              { title: "0-0-0-1", key: "0-0-0-1" },
+              { title: "0-0-0-2", key: "0-0-0-2" },
+            ],
+          },
+          {
+            title: "0-0-1",
+            jobId: "0-0-1",
+            children: [
+              { title: "0-0-1-0", key: "0-0-1-0" },
+              { title: "0-0-1-1", key: "0-0-1-1" },
+              { title: "0-0-1-2", key: "0-0-1-2" },
+            ],
+          },
+          {
+            title: "0-0-2",
+            jobId: "0-0-2",
+          },
+        ],
+      },
+      {
+        title: "0-1",
+        jobId: "0-1",
+        children: [
+          { title: "0-1-0-0", key: "0-1-0-0" },
+          { title: "0-1-0-1", key: "0-1-0-1" },
+          { title: "0-1-0-2", key: "0-1-0-2" },
+        ],
+      },
+      {
+        title: "0-2",
+        jobId: "0-2",
+      },
+    ];
+    let data = [];
+    function loop(arr, deep, origin) {
+      if (deep >= 3) return;
+      for (let e of arr) {
+        const {children, ...rest} = e
+        let ele = {
+          ...rest
+        }
+        origin.push(ele);
+        if (e.children) {
+          ele.children = [];
+          loop(e.children, deep + 1, ele.children)
+        }
+      }
+    }
+    loop(treeDataResult, 0, data);
+    undefined
+  </script>
+</body>
+
+</html>

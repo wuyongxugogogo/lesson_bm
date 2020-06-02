@@ -1,0 +1,43 @@
+{
+  "type": "document",
+  "children": [
+    {
+      "type": "element",
+      "children": [
+        {
+          "type": "element",
+          "children": [],
+          "attributes": [],
+          "tagName": "head"
+        },
+        {
+          "type": "element",
+          "children": [
+            {
+              "type": "element",
+              "children": [],
+              "attributes": [],
+              "tagName": "img"
+            },
+            {
+              "type": "element",
+              "children": [],
+              "attributes": [],
+              "tagName": "span"
+            },
+            {
+              "type": "element",
+              "children": [],
+              "attributes": [],
+              "tagName": "div"
+            }
+          ],
+          "attributes": [],
+          "tagName": "body"
+        }
+      ],
+      "attributes": [],
+      "tagName": "html"
+    }
+  ]
+}
