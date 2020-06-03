@@ -1,0 +1,60 @@
+<!-- 屏幕正中间有个元素A, 随着屏幕宽度的增加，
+始终需要满足以下条件：
+
+A元素垂直居中于屏幕***；
+
+A元素距离屏幕左右边距各10px；
+
+A元素里面的文字”A”的font-size:20px；水平垂直居中;
+
+A元素的高度始终是A元素宽度的50%; (如果搞不定可以实现为A元素的高度固定为200px;)
+
+请用 html及css 实现 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .ele {
+            background-color: blue;
+            width: 100%;
+            text-align: center;
+            padding-top: 25%;
+            padding-bottom: 25%;
+            line-height: 0;
+        }
+        .out{
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 100%;
+        }
+
+        /*  */
+    </style>
+</head>
+
+<body>
+    <div class="out">
+        <div class="ele">
+            A
+        </div>
+    </div>
+
+</body>
+
+</html>
