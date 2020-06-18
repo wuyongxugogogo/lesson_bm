@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../../jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="../../jquery.mobile-1.4.5/demos/js/jquery.js"></script>
+		<script src="../../jquery.mobile-1.4.5/demos/js/jquery.mobile-1.4.5.js"></script>
+		<link rel="stylesheet" href="../../swiper-5.4.1/package/css/swiper.css">
+		<title>烛台摆件</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#bottom {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				display: flex;
+				justify-content: space-evenly;
+			}
+			
+			.add_cart,
+			.buy_now {
+				width: 40%;
+			}
+			
+			.swiper-container {
+				width: 100%;
+				height: 350px;
+			}
+			
+			.swiper-container img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.mySwiper {
+				margin-top: 0;
+			}
+			
+			.fanhui{
+				position: absolute;
+				z-index: 999;
+				left: 10px;
+			}
+			.title{
+				width: 90%;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+			.title span{
+				font-size: 18px;
+				font-weight: 700;
+				color: #222;
+			}
+			.price-wrapper{
+				width: 90%;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+			.price-wrapper span{
+				color: red;
+			}
+			.price{
+				font-size: 20px;
+				font-weight: 700;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div data-role="page">
+			<div class="fanhui">
+				<a href="../../index.html" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext" style="border-radius: 50%;" rel="external">返回</a>
+			</div>
+			<div class="mySwiper">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="1.jpg" /></div>
+						<div class="swiper-slide"><img src="2.jpg" /></div>
+						<div class="swiper-slide"><img src="3.jpg" /></div>
+						<div class="swiper-slide"><img src="4.jpg" /></div>
+						<div class="swiper-slide"><img src="5.jpg" /></div>
+					</div>
+					<!-- 如果需要分页器 -->
+					<div class="swiper-pagination"></div>
+
+				</div>
+			</div>
+			
+			<div class="price-wrapper">
+				<span>
+					￥
+				</span>
+				<span class="price">
+					39.9
+				</span>
+			</div>
+			
+			<div class="title">
+				<span class="goods">
+					烛台摆件轻奢晚餐道具北欧浪漫烛古西餐蜡烛台美式餐桌装饰
+				</span>
+			</div>
+			
+			<div data-role="popup" id="myPopup1" class="ui-content" data-overlay-theme="b" data-transition="flow">
+				<p>商品已购买</p>
+			</div>
+			<div data-role="popup" id="myPopup2" class="ui-content" data-overlay-theme="b" data-transition="flow">
+				<p>商品已加入购物车</p>
+			</div>
+
+			<div id="bottom" data-role="footer">
+				<a href="#myPopup2" data-rel="popup" class="add_cart ui-btn ui-btn-inline ui-corner-all" data-position-to="window" style="background-color: #feab47; color: white;">
+					加入购物车
+				</a>
+				<a href="#myPopup1" data-rel="popup" class="buy_now ui-btn ui-btn-inline ui-corner-all" data-position-to="window" style="background-color: red; color: white;">
+					立即购买
+				</a>
+			</div>
+
+		</div>
+		<script src="../../swiper-5.4.1/package/js/swiper.js">
+		</script>
+		<script type="text/javascript">
+		var mySwiper = new Swiper('.swiper-container', {
+				direction: 'horizontal', // 水平切换选项
+
+
+				// 如果需要分页器
+				pagination: {
+					el: '.swiper-pagination',
+				},
+
+		})
+		</script>
+		<script type="text/javascript" src="../../js/addToCart.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.js"></script>
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.mobile-1.4.5.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+				touch-action: none;
+			}
+			
+			#top {
+				background-color: #feab47;
+				min-height: 180px;
+				width: 100%;
+			}
+			
+			#aui-login-logo {
+				padding-top: 20px;
+				width: 100px;
+				display: block;
+				margin: 0 auto;
+			}
+			
+			#top span{
+				display: block;
+				width: 75px;
+				font-size: 18px;
+				font-weight: bold;
+				margin: 0 auto;
+				color: black;
+				text-shadow: 5px 5px 10px #B43D3D;
+			}
+			
+			#id,
+			#pw,
+			#sub {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			
+			#idform #sub {
+				font-size: 16px;
+				display: block;
+				background: #feab47;
+				width: 100%;
+				margin: 0 auto;
+				border-radius: 2px;
+				height: 44px;
+				line-height: 44px;
+				text-align: center;
+				color: #fff;
+				/*opacity: 1;*/
+			}
+			
+			#reg {
+				display: block;
+				width: 100%;
+				text-align: center;
+				padding-top: 10px;
+				margin: 0 auto;
+				font-size: 10px;
+			}
+			
+			input {
+				/*border: none;*/
+				border-bottom: 2px #ccc solid;
+				width: 100%;
+				font-size: 12px;
+				height: 50px;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="" data-role="page" style="background-color: #fff;">
+			<div id="top" data-role="header">
+				<img src="icon/嗨购.svg" id="aui-login-logo">
+				<span>
+					尽在嗨购
+				</span>
+			</div>
+			<div data-role="main" class="ui-content">
+				<form method="post">
+					<div id="idform">
+						<div class="ui-field-contain">
+							<input type="text" name="fullname" data-role="none" id="id" placeholder="手机号/邮箱/用户名">
+							<input type="password" placeholder="密码" data-role="none" name="pw1" value="" id="pw1">
+							<input type="password" placeholder="确认密码" data-role="none" name="pw2" value="" id="pw2">
+							<input type="submit" id="sub" name="" data-role="none" value="注册" />
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//先获取所有用户的对象//变成数组    
+		if(window.localStorage.userArr) {
+			//判断是否存在        
+			var array = JSON.parse(window.localStorage.userArr);
+		} else {
+			array = []; //创建一个新数组    
+		}
+
+		$("#sub").bind("click", function() {
+			var username = document.getElementById("id").value;
+			var password = document.getElementById("pw1").value;
+			//遍历数组进行匹配        
+			for(var i = 0; i < array.length; i++) {
+				//判断是否有相同账号            
+				if(username == array[i].username) {
+					alert("该账号已存在");
+					window.location.href = "register.html";
+					return;
+				}
+			}
+			//创建对象        
+			var obj = {
+				username: username,
+				password: password
+			}
+			array.push(obj);
+			window.localStorage.userArr = JSON.stringify(array);
+			alert("用户创建成功");
+			window.location.href = "login.html";
+		})
+	</script>
+
+</html>

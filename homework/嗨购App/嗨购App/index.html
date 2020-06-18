@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>嗨购首页</title>
+		<!--<link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">-->
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.js"></script>
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.mobile-1.4.5.js"></script>
+		<link rel="stylesheet" href="swiper-5.4.1/package/css/swiper.css">
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.container-yigou {
+				width: 100%;
+				height: 100vh;
+				background-color: #F6F6F6;
+			}
+			
+			.top {
+				width: 100%;
+				height: 40px;
+				background-color: #FFDB47;
+			}
+			
+			.location {
+				float: left;
+				width: 20%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.topLeft {
+				text-align: center;
+				text-decoration: none;
+				line-height: 40px;
+				color: black;
+				font-size: 18px;
+				font-weight: bold;
+			}
+			
+			.search {
+				width: 65%;
+				margin: 5px 0;
+				height: 30px;
+				background-color: white;
+				float: left;
+			}
+			
+			.search input {
+				border: none;
+				width: 85%;
+				height: 30px;
+			}
+			
+			.search .img {
+				float: left;
+				height: 30px;
+				width: 15%;
+				text-align: center;
+				line-height: 30px;
+			}
+			
+			.top-right {
+				float: left;
+				width: 15%;
+				height: 35px;
+				text-align: center;
+				padding-top: 5px;
+			}
+			
+			.menu {
+				width: 95%;
+				height: 25%;
+				margin: 0 auto;
+				margin-top: 10px;
+				background-color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				align-content: center;
+				border-radius: 10px;
+			}
+			
+			.menu a {
+				text-decoration: none;
+				display: block;
+				width: 19%;
+				height: 40%;
+				font-size: 12px;
+				text-align: center;
+				color: darkgrey;
+			}
+			
+			.menu-item {}
+			
+			.menu-item img {
+				margin: 0 auto;
+				display: block;
+			}
+			
+			.activity {
+				margin: 0 auto;
+				width: 95%;
+				height: 7%;
+				display: flex;
+				justify-content: space-between;
+			}
+			
+			.activity-item {
+				width: 32%;
+				background-color: white;
+				border-radius: 10px;
+				float: left;
+				margin-top: 5px;
+			}
+			
+			.activity-item .word {
+				width: 50%;
+				height: 80%;
+				display: inline-block;
+				margin-left: 10px;
+			}
+			
+			.activity-item .word h3 {
+				font-size: 12px;
+				margin-top: 2px;
+			}
+			
+			.activity-item .word span {
+				font-size: 8px;
+				color: darkgray;
+			}
+			
+			.center-img {
+				width: 95%;
+				height: 13%;
+				margin: 0 auto;
+				margin-top: 10px;
+				background-image: url("images/center.jpg");
+				background-size: 100% 100%;
+				border-radius: 10px;
+			}
+			
+			.bottom {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				height: 7%;
+				display: flex;
+				justify-content: space-around;
+				background-color: white;
+				text-align: center;
+				border-top: 1px solid darkgray;
+			}
+			
+			.bottom-item {
+				width: 15%;
+			}
+			
+			.bottom-item img {
+				height: 50%;
+				margin: 0 auto;
+				margin-top: 3px;
+				display: block;
+			}
+			
+			.bottom-item span {
+				font-size: 13px;
+				color: darkgray;
+			}
+			
+			.cheap-buy {
+				margin: 0 auto;
+				margin-top: 10px;
+				width: 95%;
+				border-radius: 10px;
+				height: 30%;
+				background-color: white;
+			}
+			
+			.cheap-buy .buy-top {
+				width: 95%;
+				margin: 0 auto;
+				height: 30px;
+			}
+			
+			.cheap-buy .buy-top .left {
+				float: left;
+				line-height: 30px;
+				font-size: 15px;
+				color: darkorange;
+				font-weight: bold;
+			}
+			
+			.cheap-buy .buy-top .right {
+				float: right;
+				font-size: 10px;
+				color: darkgray;
+				line-height: 30px;
+			}
+			
+			.cheap-buy .buy-wrapper {
+				width: 95%;
+				height: 80%;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-between;
+			}
+			
+			.cheap-buy .buy-wrapper .buy-item {
+				width: 100%;
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				border-radius: 10px;
+			}
+			
+			.cheap-buy .buy-wrapper .buy-item .img-box {
+				width: 100%;
+				height: 60%;
+			}
+			
+			.cheap-buy .buy-wrapper .buy-item .img-box img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.cheap-buy .buy-wrapper .buy-item .word-box {
+				width: 90%;
+				height: 40%;
+				margin: 0 auto;
+			}
+			
+			.cheap-buy .buy-wrapper .buy-item .word-box .foodname {
+				color: black;
+				font-size: 12px;
+				display: block;
+				margin-top: 5px;
+				/* 超出部分用...显示 */
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			
+			.cheap-buy .buy-wrapper .buy-item .word-box .foodprice {
+				color: red;
+				font-size: 15px;
+				display: block;
+				height: 20%;
+			}
+			
+			.cheap-buy .buy-wrapper .buy-item .word-box .foodprice .line-through {
+				color: darkgray;
+				font-size: 8px;
+				/* 划去价格 */
+				text-decoration: line-through;
+			}
+			
+			.cheap-buy .buy-wrapper .buy-item .word-box .foodstore {
+				color: darkgray;
+				font-size: 12px;
+			}
+			
+			.swiper-container {
+				width: 100%;
+				height: 150px;
+			}
+			
+			.swiper-container img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.mySwiper {
+				margin-top: 0;
+			}
+			
+			.buy-wrapper a {
+				text-decoration: none;
+				width: 32%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container-yigou">
+			<div class="top">
+				<div class="location">
+					<a href="sort.html" class="topLeft">嗨购</a>
+				</div>
+				<div class="search">
+					<div class="img"><img src="icon/搜索.png" /></div>
+					<input type="text" placeholder="搜一搜：煌上煌">
+				</div>
+				<div class="top-right">
+					<img src="icon/我的1.png" alt="">
+				</div>
+			</div>
+
+			<!--轮播图-->
+			<div class="mySwiper">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="https://aecpm.alicdn.com/simba/img/TB15tIjGVXXXXcoapXXSutbFXXX.jpg" /></div>
+						<div class="swiper-slide"><img src="https://aecpm.alicdn.com/simba/img/TB1CWf9KpXXXXbuXpXXSutbFXXX.jpg_q50.jpg" /></div>
+						<div class="swiper-slide"><img src="//gw.alicdn.com/imgextra/i4/99/O1CN01Jh8vVJ1CbNoaBx60o_!!99-0-lubanu.jpg" /></div>
+						<div class="swiper-slide"><img src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/112127/35/8751/101036/5ed37cd5E79a8753c/8ef4aaf67a3b8a3e.jpg!cr_1125x445_0_171!q70.jpg.dpg" /></div>
+					</div>
+					<!-- 如果需要分页器 -->
+					<div class="swiper-pagination"></div>
+
+				</div>
+			</div>
+
+			<div class="menu">
+				<a href="#">
+					<div class="menu-item">
+						<img src="icon/充值.png" alt="">
+						<span>充值中心</span>
+					</div>
+				</a>
+				<a href="#">
+					<div class="menu-item">
+						<img src="icon/国际.png" alt="">
+						<span>嗨购国际</span>
+					</div>
+				</a>
+				<a href="meituan/1.html" rel="external">
+					<div class="menu-item">
+						<img src="icon/外卖.png" alt="">
+						<span>外卖到家</span>
+					</div>
+				</a>
+				<a href="#">
+					<div class="menu-item">
+						<img src="icon/家用电器.png" alt="">
+						<span>家用电器</span>
+					</div>
+				</a>
+				<a href="#">
+					<div class="menu-item">
+						<img src="icon/新品.png" alt="">
+						<span>新品首发</span>
+					</div>
+				</a>
+				<a href="#">
+					<div class="menu-item">
+						<img src="icon/服饰.png" alt="">
+						<span>服饰装扮</span>
+					</div>
+				</a>
+				<a href="#">
+					<div class="menu-item">
+						<img src="icon/爆款.png" alt="">
+						<span>爆款商品</span>
+					</div>
+				</a>
+				<a href="#">
+					<div class="menu-item">
+						<img src="icon/超市.png" alt="">
+						<span>嗨购超市</span>
+					</div>
+				</a>
+				<a href="hotel/1.html" rel="external">
+					<div class="menu-item">
+						<img src="icon/酒店.png" alt="">
+						<span>酒店住宿</span>
+					</div>
+				</a>
+				<a href="#">
+					<div class="menu-item">
+						<img src="icon/防晒霜.png" alt="">
+						<span>出门必备</span>
+					</div>
+				</a>
+
+			</div>
+
+			<div class="activity">
+				<div class="activity-item">
+					<div class="word">
+						<h3>嗨购农场</h3>
+						<span>0元吃美食</span>
+					</div>
+					<img src="icon/汉堡1.png" alt="">
+				</div>
+				<div class="activity-item">
+					<div class="word">
+						<h3>奖励金</h3>
+						<span>吃喝玩乐</span>
+					</div>
+					<img src="icon/甜甜圈.png" alt="">
+				</div>
+				<div class="activity-item">
+					<div class="word">
+						<h3>嗨购直播</h3>
+						<span>限时抽奖</span>
+					</div>
+					<img src="icon/live.png" alt="">
+				</div>
+			</div>
+
+			<div class="cheap-buy">
+				<div class="buy-top">
+					<span class="left">超值抢购</span>
+					<span class="right">更多</span>
+				</div>
+				<div class="buy-wrapper">
+					<a href="goods/烛台摆件/1.html" rel="external">
+						<div class="buy-item">
+							<div class="img-box">
+								<img src="img/3.jpg" alt="">
+							</div>
+							<div class="word-box">
+								<span class="foodname">烛台摆件 欧式蜡烛杯  高脚防风风灯 样板房餐厅装饰北欧浪漫烛台</span>
+								<span class="foodprice">￥39.9 <span class="line-through">￥99.9</span></span>
+								<span class="foodstore">有家</span>
+							</div>
+						</div>
+					</a>
+					<a href="goods/实木圆镜/1.html" rel="external">
+						<div class="buy-item">
+							<div class="img-box">
+								<img src="img/2.jpg" alt="">
+							</div>
+							<div class="word-box">
+								<span class="foodname">日式实木圆镜 原木壁挂镜 浴室铜镜 挂墙镜  玄光装饰镜 出口圆镜</span>
+								<span class="foodprice">￥365 <span class="line-through">￥699</span></span>
+								<span class="foodstore">大唐木业家具</span>
+							</div>
+						</div>
+					</a>
+					<a href="goods/ins照片墙/1.html" rel="external">
+						<div class="buy-item">
+							<div class="img-box">
+								<img src="img/1.jpg" alt="">
+							</div>
+							<div class="word-box">
+								<span class="foodname">ins网格照片墙 现代简约相框墙铁网相片架装饰创意实木组合挂墙画</span>
+								<span class="foodprice">￥189 <span class="line-through">￥288</span></span>
+								<span class="foodstore">柒格子家居概念店</span>
+							</div>
+						</div>
+					</a>
+
+				</div>
+			</div>
+
+			<div class="bottom">
+				<div class="bottom-item">
+					<img src="icon/首页.png" alt="">
+					<span>首页</span>
+				</div>
+				<div class="bottom-item">
+					<img src="icon/分类1.png" alt="">
+					<span>分类</span>
+				</div>
+				<div class="bottom-item">
+					<img src="icon/购物车1.png" alt="">
+					<span>购物车</span>
+				</div>
+				<div class="bottom-item">
+					<img src="icon/我的1.png" alt="">
+					<span>我的</span>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/tab.js"></script>
+		<script src="swiper-5.4.1/package/js/swiper.js">
+		</script>
+		<script type="text/javascript">
+			var mySwiper = new Swiper('.swiper-container', {
+				direction: 'horizontal', // 垂直切换选项
+				loop: true, // 循环模式选项
+
+				autoplay: {
+					disableOnInteraction: false,
+					delay: 1000
+				},
+
+				// 如果需要分页器
+				pagination: {
+					el: '.swiper-pagination',
+				},
+
+			})
+
+			$(document).on("swipeleft", function() {
+				window.location.href = "sort.html"
+
+			});
+			$(document).on("swiperight", function() {
+				window.location.href = "mine.html"
+
+			});
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--<link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">-->
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.js"></script>
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.mobile-1.4.5.js"></script>
+		<title>嗨购首页</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.container-sort {
+				width: 100%;
+				height: 100vh;
+				background-color: #F6F6F6;
+			}
+			
+			.bottom {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				height: 7%;
+				display: flex;
+				justify-content: space-around;
+				background-color: white;
+				text-align: center;
+				border-top: 1px solid darkgray;
+				z-index: 999;
+			}
+			
+			.bottom-item {
+				width: 15%;
+			}
+			
+			.bottom-item img {
+				height: 50%;
+				margin: 0 auto;
+				margin-top: 3px;
+				display: block;
+			}
+			
+			.bottom-item span {
+				font-size: 13px;
+				color: darkgray;
+			}
+			
+			
+			
+			.top{
+				width: 100%;
+				text-align: center;
+				height: 40px;
+				background-color: white;
+				color: black;
+				line-height: 40px;
+				font-weight: bold;
+			}
+			.content{
+				width: 100%;
+				height: 100%;
+			}
+			.cleft{
+				float: left;
+				width: 20%;
+				height: 100%;
+				background-color: white;
+			}
+			.cright{
+				height: 100%;
+				margin-left: 20%;
+			}
+			li{
+				width: 100%;
+				text-align: center;
+				height: 50px;
+				border-bottom: 1px dashed #ccc;
+				line-height: 50px;
+			}
+			iframe{
+				width: 100%;
+				height: 100%;
+			}
+			a{
+				text-decoration: none;
+				color: #666;
+			}
+			a:hover{
+				color: black;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container-sort">
+			<div class="top">商品分类</div>
+			<div class="content">
+				<div class="cleft">
+					<ul>
+						<li>
+							<a href="sort/hot.html" target="box">热门推荐</a>
+						</li>
+						<li>
+							<a href="sort/digital.html" target="box">手机数码</a>
+						</li>
+						<li>
+							<a href="sort/appliances.html" target="box">大家电</a>
+						</li>
+						<li>
+							<a href="sort/computer.html" target="box">电脑办公</a>
+						</li>
+						<li>
+							<a href="sort/galleyware.html" target="box">厨卫大电</a>
+						</li>
+						<li>
+							<a href="index.html" target="box">生活家电</a>
+						</li>
+						<li>
+							<a href="index.html" target="box">食品酒水</a>
+						</li>
+						<li>
+							<a href="index.html" target="box">个人护理</a>
+						</li>
+						<li>
+							<a href="index.html" target="box">美妆护肤</a>
+						</li>
+						<li>
+							<a href="index.html" target="box">奶粉尿裤</a>
+						</li>
+						<li>
+							<a href="index.html" target="box">嗨购国际</a>
+						</li>
+						<li>
+							<a href="index.html" target="box">珠宝首饰</a>
+						</li>
+					</ul>
+				</div>
+				<div class="cright">
+					<iframe src="sort/hot.html" frameborder="0" name="box"></iframe>
+				</div>
+			</div>
+
+			<div class="bottom">
+				<div class="bottom-item">
+					<img src="icon/首页1.png" alt="">
+					<span>首页</span>
+				</div>
+				<div class="bottom-item">
+					<img src="icon/分类.png" alt="">
+					<span>分类</span>
+				</div>
+				<div class="bottom-item">
+					<img src="icon/购物车1.png" alt="">
+					<span>购物车</span>
+				</div>
+				<div class="bottom-item">
+					<img src="icon/我的1.png" alt="">
+					<span>我的</span>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/tab.js"></script>
+	</body>
+	<script type="text/javascript">
+		$(document).on("swiperight", function() {
+			window.location.href = "index.html"
+
+		});
+		$(document).on("swipeleft", function() {
+			window.location.href = "cart.html"
+
+		});
+	
+	</script>
+
+</html>

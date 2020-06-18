@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+
+		<link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.js"></script>
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.mobile-1.4.5.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+				touch-action: none;
+			}
+			
+			#top {
+				background-color: #feab47;
+				min-height: 180px;
+				width: 100%;
+			}
+			
+			#aui-login-logo {
+				padding-top: 20px;
+				width: 100px;
+				display: block;
+				margin: 0 auto;
+			}
+			#top span{
+				display: block;
+				width: 75px;
+				font-size: 18px;
+				font-weight: bold;
+				margin: 0 auto;
+				color: black;
+				text-shadow: 5px 5px 10px #B43D3D;
+			}
+			#id,
+			#pw,
+			#sub {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			
+			#idform #sub {
+				font-size: 16px;
+				display: block;
+				background: red;
+				width: 100%;
+				margin: 0 auto;
+				border-radius: 2px;
+				height: 44px;
+				line-height: 44px;
+				text-align: center;
+				color: #fff;
+				opacity: 1;
+			}
+			
+			#bot li,
+			#bot a {
+				background-color: #fff;
+				border: none;
+			}
+			
+			#bot img {
+				display: inline-block;
+				width: 80%;
+				margin-top: 10px;
+				margin-left: 7%;
+			}
+			
+			#reg {
+				display: block;
+				width: 100%;
+				text-align: center;
+				padding-top: 10px;
+				margin: 0 auto;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="" data-role="page" style="background-color: #fff;">
+			<div id="top" data-role="header">
+				<img src="icon/嗨购.svg" id="aui-login-logo">
+				<span>尽在嗨购</span>
+			</div>
+			<div data-role="main" class="ui-content">
+				<form method="post">
+					<div id="idform">
+						<div class="ui-field-contain">
+							<input type="text" name="fullname" id="id" placeholder="手机号/邮箱/用户名">
+							<input type="password" placeholder="密码" name="pw" value="" id="pw">
+							<!--<button onclick="check()" type="submit" style="">登录</button>-->
+							<input type="submit" id="sub" data-role="none" name="" value="登录" />
+							<span id="reg">	未注册？请<a href="register.html" data-ajax="false"  rel="external">注册</a> </span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div id="bot" data-role="footer" style="border: none;background-color: #fff;">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#"><img src="img/微信.gif" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/微博.gif" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/QQ.gif" /></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		
+		if(window.localStorage.userArr) {
+			//判断是否存在        
+			var array = JSON.parse(window.localStorage.userArr);
+		} else {
+			array = []; //创建一个新数组    
+		}
+
+		$("#sub").bind("click", function() {
+			var username = document.getElementById("id").value;
+			var password = document.getElementById("pw").value;
+			var flag = false;
+			var index = 0;
+			//遍历数组进行匹配        
+			for(var i = 0; i < array.length; i++) {
+				//判断是否有相同账号            
+				if(username == array[i].username) { //有这个账号                
+					flag = true;
+					index = i;
+				}
+			}
+			if(flag) { //如果存在            
+				if(password == array[index].password) {
+					alert("登录成功");
+					window.location.href = "mine.html";
+				} else {
+					alert("密码错误");
+				}
+			} else { //账号不存在或输入错误            
+				alert("用户不存在，请先注册")
+			}
+
+		})
+	</script>
+
+</html>

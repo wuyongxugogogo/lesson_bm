@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size:100px">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" 
+  content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no">
+  <title>Document</title>
+  <!-- sdk -->
+  <script type="text/javascript" 
+  src="https://api.map.baidu.com/api?v=2.0&ak=47FQtS6XkphGqmZ5nSEj6WTSTwE8SGaT"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      /* css 继承 */
+      font-size: 0.28rem;
+      line-height: 1.5;
+    }
+    img {
+      max-width: 100%;
+    }
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+    .poi-item-wrapper {
+      background-color: #fff;
+      padding: 0.24rem 0 0 0.3rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .poi-item-wrapper .poi-info-wrapper {
+      display: flex;
+    }
+    .poi-item-wrapper .image-wrapper {
+      position: relative;
+      margin-top: 0.05rem;
+      width: 1.6rem;
+      height: 1.61rem;
+    }
+    .poi-item-wrapper .poi-info {
+      margin-left: 0.18rem;
+      flex:1 ;
+    }
+    .poi-item-wrapper .poi-info .price-wrapper {
+      position: relative;
+      font-size: 0.24rem;
+      line-height: 0.33rem;
+      margin-top: 0.06rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      /* height: 2rem; */
+    }
+    .poi-item-wrapper .poi-info .location {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 0.33rem;
+      line-height: 0.33rem;
+      font-size: 0.24rem;
+      font-family: PingFangSC-Regular;
+      color: #666666;
+      letter-spacing: 0.2px;
+    }
+    .poi-item-wrapper .poi-info .cate-wrapper {
+      margin-top: 0.08rem;
+      height: 0.33rem;
+      line-height: 0.33rem;
+    }
+
+    .poi-item-wrapper .poi-info .cate-wrapper .cateName {
+      color: #666;
+      letter-spacing: 0.2px;
+      margin-right: 0.09rem;
+      height: 0.28rem;
+      line-height: 0.28rem;
+      font-size: 0.24rem;
+    }
+
+    .poi-item-wrapper .poi-info .cate-wrapper .cate-tag-0 {
+      margin-right: 0.1rem;
+      height: 0.28rem;
+      line-height: 0.28rem;
+      padding: 0 0.04rem;
+      font-size: 0.22rem;
+      border-radius: 0.05rem;
+      color: rgb(190, 158, 77);
+      background-color: rgb(251, 244, 228);
+    }
+
+    .poi-item-wrapper .poi-info .service-tags .service-tag-0 {
+      height: 0.33rem;
+      line-height: 0.33rem;
+      font-size: 0.24rem;
+      color: rgb(108, 186, 178);
+    }
+
+    .star{
+      color: #FF9900;
+    }
+    
+    .header{
+    	width: 100%;
+    	text-align: center;
+    	color: black;
+    	font-size: 1.7em;
+    	font-weight: 700;
+    	background-color: white;
+    	border-bottom: 1px solid #777777;
+    }
+    .fanhui{
+    	position: absolute;
+    	z-index: 99;
+    	font-size: 1.7em;
+    }
+    .fanhui a{
+    	text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- html  +   css -->
+  <!-- 附近的商家 info  -->
+  <div class="fanhui">
+  	<a href="../index.html"><</a>
+  </div>
+  <div class="header">
+  	外卖点餐
+  </div>
+  <div class="shop-list">
+    <!-- <div class="poi-item-wrapper">
+      <div class="poi-info-wrapper">
+        <div class="image-wrapper">
+          <div class="imgbox">
+            <img src="http://p0.meituan.net/deal/__45899142__3351739.jpg@320w_320h_1e_1c" alt="">
+          </div>
+        </div>
+        <div class="poi-info">
+          <div class="poi-name"></div>
+          <div class="price-wrapper">
+            <div class="location"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="poi-item-wrapper">
+      
+    </div> -->
+  </div>
+  <!-- <div id="map"></div> -->
+  <script>
+  // 1. 距离
+  // 2. 点 经纬度
+  // 藤田镇：115.669667,27.077759
+  // 命名规范
+  const myLatitude = 27.077759,
+    myLongitude = 115.669667;
+  // 坐标 店名 评分， ... {   } JSON 对象字面量
+  const shops = [
+    {
+      name: '肯德基(莲塘店)',
+      pos: [115.950531,28.549066],
+      logo: 'https://img.meituan.net/msmerchant/60ddd3c63e687b426361a82a29d861aa491035.jpg@600w_600h_1l',
+      price:'￥99/人',
+      foodname:'西式快餐/炸鸡',
+      location:'大润发周边美食第一名',
+      service:'支持外卖'
+    },
+    {
+      name: '牛男手造(莲塘店)',
+      pos: [115.947719,28.546228],
+      logo: 'https://img.meituan.net/msmerchant/a9435f8ca8afd7e8d3ca7f4079709ad6417685.png@600w_600h_1l',
+      price:'￥34/人',
+      foodname: '披萨|澄碧湖',
+      location: '南昌县莲塘镇农贸路67号',
+      service: '支持外卖'
+    },
+    {
+      name: '古茗',
+      pos: [115.441602,27.326305],
+      logo: 'https://p0.meituan.net/wmproduct/82d17d168eeb312b2a1558ba1d2059ae112634.jpg@600w_600h_1l',
+      price:'￥10/人',
+      foodname:'奶茶/果汁',
+      location:'永丰县恩江镇恩江东路9号',
+      service:'支持外卖'
+    },
+    {
+      name: '牛好客（莱斯百货店）',
+      pos: [114.992836,27.120219],
+      logo: 'https://p0.meituan.net/deal/0b66419dbb1d1dd3680434e3b16b376f364820.jpg@600w_600h_1l',
+      price:'￥51/人',
+      foodname:'牛排/快餐',
+      location:'吉州区人民广场北路1号新世界广场',
+      service:'支持外卖'
+    },
+    {
+      name: '红味军原味老火锅（莱斯百货店）',
+      pos: [114.993792,27.119886],
+      logo: 'https://img.meituan.net/msmerchant/5c7cd82ed1d82ab7747f25ce9ec15b501648813.jpg@600w_600h_1l',
+      price:'￥65/人',
+      foodname:'火锅/美食',
+      location:'吉州区人民广场北路',
+      service:'支持外卖'
+    },
+    {
+      name: '华莱士·全鸡汉堡（永丰欧阳店）',
+      pos: [115.433738,27.328894],
+      logo: 'https://p1.meituan.net/waimaipoi/48279e1e98b66836fff9f49e4b69712417855.jpg@380w_214h_1e_1c',
+      price:'￥25/人',
+      foodname:'西式快餐/汉堡',
+      location:'永丰县欧阳修大道',
+      service:'支持外卖'
+    },
+    {
+      name: '新时沏（永丰店）',
+      pos: [115.442293,27.328199],
+      logo: 'http://qcloud.dpfile.com/pc/Lx36pIB2UzK8IFW-uVXZ39dwHOs_UubyYXAz5VR8f6CFaWWDZIAW-DbjOv7w1we9ZSUjBikR5Ecy-DoGYkMhlg.jpg',
+      price:'￥11/人',
+      foodname:'奶茶/果汁',
+      location:'永丰县跃进路东路',
+      service:'支持外卖'
+    },
+    {
+      name: '老永丰味道',
+      pos: [115.432188,27.325457],
+      logo: 'https://p1.meituan.net/waimaipoi/cc9089c5a74cbcb58e47ef185ee4a79a38518.jpg@380w_214h_1e_1c',
+      price:'￥22/人',
+      foodname:'家常菜|永丰',
+      location:'永丰县恩江大道121号',
+      service:'支持外卖'
+    },
+    {
+      name: '藤田菜馆赣湘木桶饭',
+      pos: [115.670138,27.075097],
+      logo: 'https://p1.meituan.net/waimaipoi/782f603761b0ce65c5ff2bfbad8b4e5d226247.jpg@380w_214h_1e_1c',
+      price:'￥15/人',
+      foodname:'快餐简餐|永丰',
+      location:'永丰县恩江镇恩江南路',
+      service:'不支持外卖'
+    },
+    {
+      name: '豪德亨排自助餐厅',
+      pos: [115.440782,27.327514],
+      logo: 'https://img.meituan.net/msmerchant/4ec48cae2152f07d367a9746be5439cb111922.jpg@600w_600h_1l',
+      price:'￥78/人',
+      foodname:'牛排丨永丰',
+      location:'永丰县永丰县恩江镇恩江北路7号',
+      service:'支持外卖'
+    }
+  ]; 
+  
+  // sdk 有点大， 他在远方
+  // js 事件机制
+  window.onload = function() {
+    const shopContainer = document.querySelector('.shop-list');
+    const map = new BMap.Map(); //实例化地图
+    const myPoint = new BMap.Point(myLongitude, myLatitude);
+
+    for(let i = 0; i < shops.length; i++) {
+      let  shopPoint = new BMap.Point(shops[i].pos[0],
+      shops[i].pos[1]);
+      let distance = parseDistance(
+    //   // 925.1111
+        map.getDistance(myPoint, shopPoint)
+      ); // 
+      shopContainer.innerHTML += `
+        <div class="poi-item-wrapper">
+          <div class="poi-info-wrapper">
+            <div class="image-wrapper">
+              <div class="imgbox">
+                <img src="${shops[i].logo}" alt="">
+              </div>
+            </div>
+            <div class="poi-info">
+              <div class="poi-name">${shops[i].name}</div>
+              <div class="price-wrapper">
+                <span class="stars">
+                <i class="star">★</i>
+                <i class="star">★</i>
+                <i class="star">★</i>
+                <i class="star">★</i>
+                <i class="star">★</i>
+                </span>
+                <span class="price">${shops[i].price}</span>
+                <div class="location">${distance}</div>
+              </div>
+              <div class="cate-wrapper">
+                <span class="cateName">${shops[i].foodname}</span>
+                <span class="cate-tag-0">${shops[i].location}</span>
+              </div>
+              <div class="service-tags">
+                <span class="service-tag-0">${shops[i].service}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `
+    }
+    function parseDistance(distance) {
+      //  如果> 1000米 返回  4.1km
+      // 否则 整数  936m
+      if (distance < 1000) {
+        return parseInt(distance); 
+      } else {
+        return (distance/1000).toFixed(1);
+      }
+    }
+
+    //  开始我们的js 编程
+    
+
+    // const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
+    // const distance = parseDistance(
+    //   // 925.1111
+    //   map.getDistance(myPoint, kfcPoint)
+    // ); // Number
+    // // console.log(distance);
+    // document.querySelector('.poi-name').innerHTML =  '肯德基';
+    // document.querySelector('.location').innerHTML = distance;
+    // document.querySelector('.imgbox img').src = 
+    //   "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
+  }
+  
+  </script>
+</body>
+</html>

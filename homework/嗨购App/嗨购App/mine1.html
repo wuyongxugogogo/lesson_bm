@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.js"></script>
+		<script src="jquery.mobile-1.4.5/demos/js/jquery.mobile-1.4.5.js"></script>
+		<title>嗨购首页</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.container-mine {
+				width: 100%;
+				height: 100vh;
+				background-color: #F6F6F6;
+			}
+			
+			.bottom {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				height: 7%;
+				display: flex;
+				justify-content: space-around;
+				background-color: white;
+				text-align: center;
+				border-top: 1px solid darkgray;
+			}
+			
+			.bottom-item {
+				width: 15%;
+			}
+			
+			.bottom-item img {
+				height: 50%;
+				margin: 0 auto;
+				margin-top: 3px;
+				display: block;
+			}
+			
+			.bottom-item span {
+				font-size: 13px;
+				color: darkgray;
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+				touch-action: none;
+			}
+			
+			.my-info-background {
+				position: relative;
+				width: 100%;
+				min-height: 200px;
+				overflow: hidden;
+				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFDB47), color-stop(1, #F6F6F6));
+			}
+			
+			.my-info .my-avatar {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 80px;
+				height: 80px;
+				margin-left: -40px;
+				margin-top: -40px;
+				border-radius: 50%;
+				border: solid 2px rgba(255, 255, 255, 0.7);
+			}
+			
+			.my-info .name {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 200px;
+				height: 20px;
+				margin-left: -100px;
+				margin-top: 50px;
+				/* margin: 20px 0 0 -100px; */
+				text-align: center;
+				color: red;
+				display: block;
+				border: 1px solid black;
+			}
+			
+			.my-info .my-vip {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 200px;
+				height: 24px;
+				margin-left: -100px;
+				margin-top: 110px;
+				line-height: 24px;
+				/* margin: 45px 0 0 -100px; */
+				padding: 0 4px;
+				border-radius: 3px;
+				text-align: center;
+				font-size: 12px;
+				color: #fff;
+				background: rgba(0, 0, 0, 0.2);
+			}
+			/* 			#con ul li{
+				float: left;
+				list-style: none;
+			}*/
+			
+			#con #nav img {
+				display: block;
+				width: 80px;
+			}
+			
+			#con #nav a {
+				display: inline-block;
+				width: 80px;
+				text-decoration: none;
+			}
+			
+			#con #nav li,
+			#con #nav a {
+				background-color: #fff;
+				border: none;
+			}
+			
+			ul#oul {
+				box-shadow: none;
+				background-color: #fff;
+			}
+			
+			#oul li,
+			#oul a {
+				background-color: #fff;
+				display: block;
+				font-size: 14px;
+				border: none;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			
+			#oul #dive {
+				border-top: 5px solid #ccc;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container-mine" data-role="page" id="pageone" style="background-color: #fff;">
+			<div data-role="header" class="my-info" data-position="fixed">
+				<div class="my-info-background">
+					<img class="my-avatar" src="icon/嗨购.svg">
+					<a href="login.html" rel="external"><span class="name">登录/注册</span></a>
+					
+					<span class="my-vip" style="background:none">超级会员</span>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content" id="con">
+				<div data-role="navbar" id="nav">
+					<ul>
+						<li>
+							<a href="#" rel="external" data-ajax="false"><img src="img/mypage/me-01.png" />
+								<span class="img-icon-name">待付款</span></a>
+						</li>
+						<li>
+							<a href="#" rel="external" data-ajax="false"><img src="img/mypage/me-02.png" />
+								<span class="img-icon-name">待收货</span></a>
+						</li>
+						<li>
+							<a href="#" rel="external" data-ajax="false"><img src="img/mypage/me-03.png" />
+								<span class="img-icon-name">我的订单</span></a>
+						</li>
+					</ul>
+				</div>
+				<ul data-role="listview" data-inset="true" id="oul">
+					<li>
+						<a href="#" rel="external" data-ajax="false"><img src="img/mypage/me-05.png" class="ui-li-icon"> 我的收藏
+						</a>
+					</li>
+					<li>
+						<a href="#" rel="external" data-ajax="false"><img src="img/mypage/me-06.png" class="ui-li-icon"> 我的评价
+						</a>
+					</li>
+					<li>
+						<a href="#"><img src="img/mypage/me-07.png" class="ui-li-icon"> 地址管理
+						</a>
+					</li>
+					<li id="dive">
+						<a href="#" rel="external" data-ajax="false"><img src="img/mypage/me-08.png" class="ui-li-icon"> 退出账号
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="bottom">
+				<div class="bottom-item">
+					<img src="icon/首页1.png" alt="">
+					<span>首页</span>
+				</div>
+				<div class="bottom-item">
+					<img src="icon/分类1.png" alt="">
+					<span>分类</span>
+				</div>
+				<div class="bottom-item">
+					<img src="icon/购物车1.png" alt="">
+					<span>购物车</span>
+				</div>
+				<div class="bottom-item">
+					<img src="icon/我的.png" alt="">
+					<span>我的</span>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/tab.js"></script>
+	</body>
+
+	<script type="text/javascript">
+		$(document).on("swiperight", function() {
+			window.location.href = "cart.html"
+
+		});
+		$(document).on("swipeleft", function() {
+			window.location.href = "index.html"
+
+		});
+	</script>
+
+</html>
