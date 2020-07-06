@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li data-uid="1">1</li>
+        <li data-uid="2">2</li>
+        <li data-uid="3">3</li>
+    </ul>
+    <script>
+        const lis = document.querySelectorAll('ul li');
+        for(let node of lis){
+            node.addEventListener('click',()=>{
+
+            })
+        }
+        let ul = document.querySelector('ul');
+        ul.addEventListener('click',(event)=>{
+            let nickname = event.target.textContent;
+            let uid = event.target.getAttribute('data-uid');
+            console.log('clicked!!',event.target,
+            event.currentTarget,nickname,uid)
+        })
+
+        // 3个li
+        const lis1 = document.querySelectorAll('li');
+        
+        // 动态的获取 DOM 节点，实时的
+        const lis2 = document.getElementsByTagName('li');
+        ul.removeChild(lis1[0])
+        console.log(lis1,lis2)
+    </script>
+</body>
+</html>

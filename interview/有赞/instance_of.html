@@ -1,0 +1,25 @@
+<script>
+    let r = '909090'
+    let obj = {
+        [r]: 123,
+        'r': 456
+    }
+
+    console.log(obj, obj[r])
+    console.log(obj['r'], obj.r)
+    for(let key in obj) {
+        console.log(obj[key]);
+    }
+    class myArr {
+        static a = 1;
+        static [Symbol.hasInstance](){
+            return true;
+        }
+        push(){
+            console.log('发生了 push, 和原生 push 一样')
+        }
+    }
+    let arr = new myArr();
+    console.log(myArr[Symbol.hasInstance])
+    console.log(arr instanceof myArr)
+</script>
