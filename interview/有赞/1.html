@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* +选择器 第一个li不选中 */
+        li + li {
+            border-left: 1px solid #000000;
+        }
+        /* > 子选择器 */
+        ul > li {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        // 所有的异步任务成功才会成功
+        Promise.all([promise,promise1,promise2,promise3])
+        .then(res => {
+            console.log(res);
+        })
+        .catch()
+
+        Promise.allSettled([promise,promise1,promise2,promise3])
+        .then(res => {
+            console.log(res);
+        })
+        .catch()
+
+        // 哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态
+        Promise.race([promise1,promise2])
+        .then(res => {
+            console.log(res)
+        })
+        .catch()
+    </script>
+</body>
+</html>
