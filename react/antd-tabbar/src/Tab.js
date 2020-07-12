@@ -58,7 +58,8 @@ class Tab extends React.Component {
       this.state = {
          course:[],
          allCourse: [],
-         x: []
+         course1:[],
+         course2:[]
       }
    }
 
@@ -67,14 +68,16 @@ class Tab extends React.Component {
       .then(res=>{
          this.setState({
             course: res.data.course,
-            allCourse: res.data.course
+            allCourse: res.data.course,
+            course1: res.data.course,
+            course2: res.data.course
          })
       })
    }
 
    progress(key){
       // console.log(this.state.allCourse)
-      const allcourse = this.state.allCourse
+      const allcourse = this.state.allCourse;
       const unlearnd = allcourse.filter((index)=>{
          const percent = parseInt((index.learnd/index.lesson)*100);
          if(percent < 50){
@@ -89,24 +92,21 @@ class Tab extends React.Component {
       })
       if(key == 1){
          this.setState({
-            course: allcourse,
-            x: allcourse,
+            course1: allcourse
          })
       }else if(key == 2){
          this.setState({
-            course: unlearnd,
-            x: unlearnd
+            course1: unlearnd
          })
       }else{
          this.setState({
-            course: learnd,
-            x: learnd
+            course1: learnd
          })
       }
    }
 
    filter2(key){
-      const allcourse = this.state.x;
+      const allcourse = this.state.allCourse;
       const one = allcourse.filter((index)=>{
          if(index.key2 < 3){
             return index
@@ -134,35 +134,40 @@ class Tab extends React.Component {
       })
       if(key == 1){
          this.setState({
-            course: allcourse
+            course2:allcourse,
          })
       }else if(key == 2){
          this.setState({
-            course: one
+            course2: one,
          })
       }else if(key == 3){
          this.setState({
-            course: two
+            course2: two,
          })
       }else if(key == 4){
          this.setState({
-            course: three
+            course2: three,
          })
       }else if(key == 5){
          this.setState({
-            course: four
+            course2: four,
          })
       }else if(key == 6){
          this.setState({
-            course: five
+            course2: five,
          })
       }
    }
 
    render() {
       const { size } = this.state;
-      const { course } = this.state;
+      const { course1,course2,allCourse } = this.state;
       // console.log(course);
+      let [cou1,cou2] = [[] , []];
+      course1.forEach(i => cou1.push(i.key));
+      course2.forEach(i => cou2.push(i.key));
+      const afterFilter = cou1.filter(i => cou2.includes(i));
+      const finalCourse = allCourse.filter(i => afterFilter.includes(i.key));
 
       return (
          <div>
@@ -195,7 +200,7 @@ class Tab extends React.Component {
                  
                </TabPane>
             </Tabs>
-            <Table columns={columns} dataSource={this.state.course} showHeader={false} />
+            <Table columns={columns} dataSource={finalCourse} showHeader={false} />
          </div>
       );
    }
