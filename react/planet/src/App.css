@@ -16,7 +16,7 @@
 }
 .bottom-tab .tab-item{
   width: 20%;
-  height: 100%;
+  height: 40px;
   background-color: rosybrown;
   text-align: center;
   line-height: 40px;
