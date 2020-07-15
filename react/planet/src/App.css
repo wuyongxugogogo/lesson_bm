@@ -2,3 +2,32 @@
   margin: 0;
   padding: 0;
 }
+.wrapper{
+  margin-bottom: 50px;
+}
+.bottom-tab{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content:space-around;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+}
+.bottom-tab .tab-item{
+  width: 20%;
+  height: 100%;
+  background-color: rosybrown;
+  text-align: center;
+  line-height: 40px;
+}
+.nav-link, .link{
+  display: block;
+  color: inherit;
+  text-decoration: none
+}
+
+.nav-link.active{
+  color: aquamarine;
+}
+    

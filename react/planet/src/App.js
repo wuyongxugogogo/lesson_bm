@@ -10,9 +10,17 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <div className="wrapper">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/dynamic" component={Dynamic} />
+            <Route path="/find" component={Find} />
+            <Route path='/mine' component={Mine} />
+          </Switch>
+        </div>
         <div className="bottom-tab">
           <div className="tab-item">
-            <NavLink className="nav-link" to="/"><span>星球</span></NavLink>
+            <NavLink exact className="nav-link" to="/"><span>星球</span></NavLink>
           </div>
           <div className="tab-item">
             <NavLink className="nav-link" to="/dynamic"><span>动态</span></NavLink>
@@ -24,12 +32,6 @@ function App() {
             <NavLink className="nav-link" to="/mine"><span>我</span></NavLink>
           </div>
         </div>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/dynamic" component={Dynamic} />
-          <Route path="/find" component={Find} />
-          <Route path='/mine' component={Mine} />
-        </Switch>
       </div>
     </Router>
   );
