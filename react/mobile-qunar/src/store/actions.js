@@ -14,3 +14,13 @@ export function setTo(to) {
         payload: to,
     }
 }
+
+export function exchangeFromTo(){
+    // 两个action都要调用
+    // payload 传值
+    return (dispatch, getState) => {
+        const { from, to } = getState()
+        dispatch(setFrom(to))
+        dispatch(setTo(from))
+    }
+}

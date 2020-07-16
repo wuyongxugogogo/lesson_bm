@@ -1,20 +1,30 @@
-import React, { useCallback } from 'react';
-import logo from './logo.svg';
+import React, { useCallback, useMemo } from 'react';
 import './App.css';
 import Header from './components/header/Header.jsx';
 import { connect } from 'react-redux';
-import { func } from 'prop-types';
-// import Journey from '../../qunar/src/components/journey/Journey';
+import Journey from './components/journey/Journey';
+import { bindActionCreators } from 'redux';
+import {
+  exchangeFromTo
+} from './store/actions'
+
 function App(props) {
   // console.log(props)
   const { 
     from,
-    to
+    to,
+    dispatch
   } = props;
 
   const onBack = useCallback(() => {
     window.history.back();
   }, []);
+
+  const cbs = useMemo(()=>{
+    return bindActionCreators({
+      exchangeFromTo
+    },dispatch)
+  },[])
 
   return (
     <div>
@@ -22,7 +32,7 @@ function App(props) {
         <Header title="火车票" onBack={onBack}/>
       </div>
       <form action="./query.html" className="form">
-        {/* <Journey from={from} to={to} /> */}
+        <Journey from={from} to={to} {...cbs}/>
       </form>
     </div>
   );
@@ -30,5 +40,9 @@ function App(props) {
 
 export default connect(function mapStateToProps(state){
   return state;
+},function mapDispatchToProps(dispatch){
+  return {
+    dispatch
+  }
 })(App);
 // export default App;
