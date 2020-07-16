@@ -60,6 +60,7 @@
     height: 100%;
     border: none;
     float: left;
+    outline: none;
     background-color: #EBECEE;
 }
 .planets{
@@ -68,6 +69,7 @@
     height: 80%;
     flex-wrap: wrap;
     justify-content: flex-start;
+    align-content: flex-start;
 }
 .planet{
     width: 45%;
@@ -101,6 +103,16 @@
     color: #7D7E80;
     font-size: 17px;
     font-weight: 600;
+}
+#addPlanet{
+    border: 1px dashed #BABBBF;
+    background-color: transparent;
+}
+#addPlanet .addImg{
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+    margin-top: 57px;
 }
 
 

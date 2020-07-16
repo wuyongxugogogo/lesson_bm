@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Input, Button, List } from 'antd';
 import store from './store';
+import { changeInputAction,addItemAction,deleteItemAction,getListAction } from './store/actionCreators'
+import axios from 'axios';
+import './mock/data.js'
 
 
 class TodoList extends Component {
@@ -11,8 +14,10 @@ class TodoList extends Component {
         this.changeInputValue = this.changeInputValue.bind(this)
         this.storeChange = this.storeChange.bind(this)
         this.clickBtn = this.clickBtn.bind(this)
+        this.deleteItem = this.deleteItem.bind(this)
         store.subscribe(this.storeChange)
     }
+
     render() {
         return (
             <div style={{ margin: '10px' }}>
@@ -40,11 +45,17 @@ class TodoList extends Component {
         );
     }
 
+    componentDidMount(){
+        axios.get('/list')
+        .then((res)=>{
+            const data = res.data;
+            const action = getListAction(data)
+            store.dispatch(action)
+        })
+    }
+
     changeInputValue(e){
-        const action = {
-            type: 'changeInput',
-            value: e.target.value
-        }
+        const action = changeInputAction(e.target.value)
         store.dispatch(action)
     }
 
@@ -53,16 +64,11 @@ class TodoList extends Component {
     }
 
     clickBtn(){
-        const action = {
-            type: 'addItem'
-        }
+        const action = addItemAction()
         store.dispatch(action)
     }
     deleteItem(index){
-        const action={
-            type: 'deleteItem',
-            index
-        }
+        const action = deleteItemAction(index)
         store.dispatch(action)
     }
 }
