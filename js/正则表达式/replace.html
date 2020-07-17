@@ -1,0 +1,9 @@
+<script>
+    let str = 'my name is {name}, age is {age}';
+    str.replace('{name}','lilei');
+    let reg = /\{(\w+)}/g;
+    let newStr = str.replace(reg,()=>{
+        return 'lilei'
+    })
+    console.log(newStr)
+</script>
