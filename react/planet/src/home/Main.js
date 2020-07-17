@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import imgURL2 from '../icon/搜索.png';
 import image from '../image/image.jpg';
 import addImg from '../image/加号.png';
+import { Link } from 'react-router-dom';
 
 class Main extends Component {
     constructor() {
@@ -33,7 +34,7 @@ class Main extends Component {
                             <span>刘风飞</span>
                         </div>
                     </div>
-                    {/* <div className="planet">
+                    <div className="planet">
                         <div className="pImg"><img src={image} alt=""/></div>
                         <div className="pName">
                             <span className="pname">肉山前端小课堂</span>
@@ -53,10 +54,12 @@ class Main extends Component {
                             <span className="pname">旅梦开发团</span>
                             <span>吴永旭</span>
                         </div>
-                    </div> */}
-                    <div className="planet" id="addPlanet">
-                        <div className="addImg"><img src={addImg} alt="" /></div>
                     </div>
+                    <Link to="/addItem/" className="planet" id="addPlanet" >
+                        <div>
+                            <div className="addImg"><img src={addImg} alt="" /></div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         )
