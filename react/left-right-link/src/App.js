@@ -57,16 +57,21 @@ function App() {
   const ref = useRef()
   useEffect(() => {
     const tabDetail = ref.current
+    console.log(tabDetail)
     const tabs = tabDetail.querySelectorAll('[data-rtab]')
+    console.log(tabs)
     for(let tab of tabs){
       let h = tab.getBoundingClientRect().height;
+      console.log(h)
       let newH = base + h;
       ranges.push([base,newH])
       base = newH
     }
     function onScroll(e) {
       const scrollTop = tabDetail.scrollTop;
+      console.log(scrollTop)
       const index = ranges.findIndex(range => scrollTop >= range[0] && scrollTop < range[1])
+      console.log(index)
       setActiveIndex(index)
     }
     tabDetail.addEventListener('scroll',onScroll)
