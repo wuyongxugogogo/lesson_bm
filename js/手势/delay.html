@@ -1,0 +1,24 @@
+<style>
+    #my{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+</style>
+<div id="my"></div>
+<script>
+    const my = document.querySelector('#my');
+    const event = new CustomEvent('click');
+    // setTimeout(()=>{
+    //     my.dispatchEvent(event)
+    // },3000)
+    my.addEventListener('touchstart',()=>{
+        my.dispatchEvent(event);
+    })
+    my.addEventListener('touchend',(e)=>{
+        e.preventDefault();
+    })
+    // my.addEventListener('click',function(){
+    //     console.log('click');
+    // })
+</script>

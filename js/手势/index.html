@@ -1,0 +1,15 @@
+<style>
+    #my{
+        width: 400px;
+        height: 400px;
+        background-color: red;
+    }
+</style>
+<div id="my"></div>
+<script src="./event.js"></script>
+<script>
+    const my = document.getElementById('my');
+    my.addEventListener('tap',function(){
+        console.log('tap')
+    })
+</script>
