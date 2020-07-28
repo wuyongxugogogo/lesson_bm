@@ -1,0 +1,42 @@
+<script>
+    // sleep 休眠
+    function sleep(time) {
+        let pre = Date.now()
+        while (Date.now() - pre < time) { }
+    }
+    function sleep2(time) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, time)
+        })
+    }
+    console.log(1);
+    sleep(3000);
+    console.log(2)
+        (async () => {
+            let a = await sleep2(3000);
+            console.log(3, a);
+        })()
+    function* foo() {
+        const a = yield sleep2(1000)
+        console.log(a);
+        const b = yield sleep2(1000)
+        console.log(b)
+    }
+    // next(值) 当作 yield 返回值
+    // 如果 a 要为 promise 的 resolve 的值
+    // 要把 promise的resolve 的值 写到 next 里面去
+    // promise.then(res => next(res))
+
+    function autoRun(obj, pre) {
+        let { done, value } = obj.next(pre);
+        if (done) return
+        value.then((res) => {
+            autoRun(obj, res)
+        })
+        // autoRun(obj);
+    }
+    let iterator = foo();
+    autoRun(iterator);
+</script>

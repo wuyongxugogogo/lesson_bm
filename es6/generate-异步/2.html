@@ -1,0 +1,17 @@
+<script>
+    function * foo(){
+        console.log('start')
+        let a = yield 1;
+        console.log(a)
+        let b = yield 2
+        console.log(b)
+        let c = yield 3
+        console.log(c)
+        console.log('end')
+    }
+    let iterator = foo();
+    let val1 = iterator.next();
+    let val2 = iterator.next(1); // 上一个 yield 返回值
+    let val3 = iterator.next(2);
+    let val4 = iterator.next(3);
+</script>

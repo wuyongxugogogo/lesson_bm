@@ -1,0 +1,96 @@
+<script>
+    // 类似 async await
+    // 协(纤)程：意为比 进程 / 线程 更小的单位
+
+    // 普通函数不可被打断 一次性执行完
+    // 终止 打断
+    function* foo() {
+        let a = yield 1;  // yield 不是 返回1
+        // 如果需要返回值 放到 next(返回值)
+        console.log('1', a)
+        let b = yield 2
+        console.log('2', b)
+        let c = yield 3
+        console.log('3', c)
+    }
+    let iterator = foo();
+    // console.log(iterator.next());
+    // console.log(iterator.next());
+    // console.log(iterator.next());
+    // console.log(iterator.next());
+
+    function autoRun(iteratorObj) {
+        let { done } = iteratorObj.next();
+        if (done) return;
+        autoRun(iteratorObj)
+    }
+    autoRun(iterator)
+
+
+    // repeat 实现，使用JS实现一个repeat方法，调用这个 repeatedFunc("hellworld") ，会alert4次 helloworld, 每次间隔3秒
+
+    // function repeat(func, times, wait) {
+    // }
+    // const repeatFunc = repeat(alert, 4, 3000)
+
+    // 用generate实现
+    function repeat(func, times, wait) {
+        return (content) => {
+            function sleep(time) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve()
+                    }, time)
+                })
+            }
+
+            function* foo() {
+                for (let i = 0; i < times; i++) {
+                    yield sleep(wait)
+                    func(content)
+                }
+            }
+            let iterator = foo();
+
+            function autorun(obj) {
+                let {
+                    value,
+                    done
+                } = obj.next();
+                if (done) return
+                value.then(() => {
+                    autorun(obj)
+                })
+            }
+            autorun(iterator)
+        }
+
+
+    }
+    const repeatFunc = repeat(console.log, 4, 3000)
+    repeatFunc("hellworld");
+
+    // 普通方法
+    function repeat2(func, times, wait) {
+        return (arg) => {
+            for (let i = 1; i <= times; i++) {
+                setTimeout(() => {
+                    func(arg)
+                }, i * wait)
+            }
+        }
+    }
+    const repeatFunc2 = repeat2(alert, 4, 3000) // 返回一个函数 下面再传个参数
+    repeatFunc2("hello");
+
+    // auguments
+    function test(){
+        console.log(arguments)
+        console.log(arguments.forEach)
+        // 类数组 有数组的长度 但是没有数组的api
+        console.log(Array.from(arguments))
+        // [...arguments] 左边和上一行两种都可以转为真数组
+    }
+    test(1,2,3,4,5,6)
+
+</script>
