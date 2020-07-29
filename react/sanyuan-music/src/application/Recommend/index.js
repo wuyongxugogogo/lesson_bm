@@ -1,19 +1,21 @@
 import React, { useEffect, useState, memo } from 'react';
-import { connect } from 'react-redux';
+import { connect } from 
+'react-redux';
 import * as actionTypes from './store/actionCreators';
 
 function Recommend(props) {
   const { recommendList, banners, enterLoading } = props
-  const { getRecommendListDataDispatch, getBannerDateDispatch } = props
-  console.log(recommendList)
-  useEffect(()=>{
-    if(!recommendList.length){
+  const { getRecommendListDataDispatch, getBannersDataDispatch } = props
+  useEffect(() => {
+    if (!recommendList.length) {
       getRecommendListDataDispatch();
     }
-    if(!banners.length){
-      getBannerDateDispatch();
+    if (!banners.length) {
+      getBannersDataDispatch();
     }
-  },[])
+  }, [])
+
+  console.log(recommendList,banners, enterLoading, '---------');
   return (
     <>
     Recommend
@@ -28,10 +30,10 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => {
   return {
-    getRecommendListDataDispatch(){
+    getRecommendListDataDispatch() {
       dispatch(actionTypes.getRecommendList());
     },
-    getBannerDateDispatch(){
+    getBannersDataDispatch() {
       dispatch(actionTypes.getBanners());
     }
   }

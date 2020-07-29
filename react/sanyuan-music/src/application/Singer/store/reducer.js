@@ -1,14 +1,13 @@
+import * as actionTypes from './constants';
 const defaultState = {
-    category: "",
-    alpha: "",
-    singerList: [],
-    enterLoading: true,
-    listOffset: 0
-}
+  artist: {}
+};
 
 export default (state = defaultState, action) => {
-    switch(action.type){
-        default:
-            return state
-    }
+  switch(action.type) {
+    case actionTypes.CHANGE_ARTIST:
+      return {...state, artist: action.data}
+    default:
+      return state;
+  }
 }
