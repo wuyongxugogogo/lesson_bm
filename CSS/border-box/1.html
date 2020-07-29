@@ -1,0 +1,24 @@
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        padding-top: 20px;
+        margin-top: 20px;
+        border: 2px solid aqua;
+    }
+
+    .box1 {
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+</body>
+<script>
+    document.querySelector('.box1').getBoundingClientRect()  // w h
+    document.querySelector('.box2').getBoundingClientRect()  // w h
+</script>
+
+<!-- border-box 会把padding border 都算在width里面 -->
