@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML）
+        function ajax({method, url, data, timeout}) {
+            // axios
+            // 原生 XMLHttpRequest
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.timeout = timeout;
+                xhr.open(method, url, true);
+                // for (let k in headers) {
+                //     xhr.setRequestHeader(k, headers[k])
+                // }
+                xhr.ontimeout = function () {
+                    reject('timeout')
+                }
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                            resolve(xhr.response)
+                        } else {
+                            reject('response error')
+                        }
+                    }
+                }
+                // xhr.onload
+                // 数据??
+                // GET 数据拼接到 url 后面
+                // POST 要看 Content-type
+                // 思考：Content-type 常见的类型有哪些，每个类型对数据的要求格式是怎么样的
+                // Content-type: application/json 符合json(key-value) {a:1,b:2}
+                // Content-type: application/x-www-form-urlencoded   a=1&b=2
+                // Content-type: text/plain                         字符串   a=1,b=2
+                // Content-type: form-data                    文件(包含大量的非ASCII字符)
+                xhr.send();
+            })
+        }
+        ajax({
+            method:'GET',
+            url:'http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA',
+            timeout:500
+        })
+        .then(res=>{
+            console.log(res)
+        })
+    </script>
+</body>
+
+</html>
