@@ -1,4 +1,4 @@
-import { RankTypes } from "./config";
+// import { RankTypes } from "./config";
 //防抖函数
 
 const debounce = (func, delay) => {
@@ -36,12 +36,12 @@ export const filterIndex = rankList => {
 };
 
 //找出排行榜的编号
-export const filterIdx = name => {
-  for (let key in RankTypes) {
-    if (RankTypes[key] === name) return key;
-  }
-  return null;
-};
+// export const filterIdx = name => {
+//   for (let key in RankTypes) {
+//     if (RankTypes[key] === name) return key;
+//   }
+//   return null;
+// };
 
 // 给css3相关属性增加浏览器前缀，处理浏览器兼容性问题
 let elementStyle = document.createElement("div").style;

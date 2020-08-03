@@ -1,0 +1,23 @@
+<style>
+    .box {
+        width: 40px;
+        height: 40px;
+        outline: 1px solid red;
+    }
+
+    .box1 {
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+        perspective: 100px;
+    }
+</style>
+
+<div class="box box1">1</div>
+<div class="box box2"> 2 </div>
+<script>
+    const box1 = document.querySelector('.box1');
+    setTimeout(() => {
+        // box1.style.display = 'none'
+        box1.style.transform=`translate3d()`
+    }, 3000);
+</script>
