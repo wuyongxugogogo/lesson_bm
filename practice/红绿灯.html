@@ -1,0 +1,98 @@
+<style>
+    div {
+        background-color: grey;
+        display: inline-block;
+        margin: 30px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        ;
+    }
+
+    .green.light {
+        background-color: green;
+    }
+
+    .yellow.light {
+        background-color: yellow;
+    }
+
+    .red.light {
+        background-color: red;
+    }
+</style>
+
+
+<div class="red"></div>
+<div class="yellow"></div>
+<div class="green"></div>
+
+
+<!-- <button id="next" onclick="go();">开始</button> -->
+
+<script>
+    function green() {
+        clear();
+        const Green = document.querySelector(".green")
+        Green.classList.add('light')
+    }
+    function red() {
+        clear();
+        const Red = document.querySelector(".red")
+        Red.classList.add('light')
+    }
+    function yellow() {
+        clear();
+        const Yellow = document.querySelector(".yellow")
+        Yellow.classList.add('light')
+    }
+    // green();
+    // red();
+    // yellow();
+    function clear() {
+        var lights = document.getElementsByTagName("div");
+        for (var i = 0; i < 3; i++) {
+            lights[i].classList.remove("light")
+        }
+    }
+
+    // function b() {
+    //     let i = 0;
+    //     a();
+    //     function a() {
+    //         i++
+    //         if (i >= 2) {
+    //             clearInterval(interval)
+    //         }
+    //         red();
+    //         let timeout1 = setTimeout(() => {
+    //             yellow()
+    //         }, 1000)
+    //         let timeout2 = setTimeout(() => {
+    //             green()
+    //         }, 3000)
+    //         console.log(i)
+    //     }
+    //     let interval = setInterval(a, 6000);
+    // }
+    // b()
+
+    function sleep(time){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve()
+            },time)
+        })
+    }
+    async function loop2(){
+        for(let i = 0; i < 5; i++){
+            red();
+            await sleep(1000)
+            yellow();
+            await sleep(2000)
+            green();
+            await sleep(3000)
+        }
+    }
+    loop2();
+</script>
