@@ -1,0 +1,29 @@
+.loading {
+  width: 40px;
+  height: 40px;
+  outline: 1px solid red;
+  transform-origin: center;
+  animation: rotate 1s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ptr-wrap{
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  margin-left: -20px;
+  z-index: -1;
+}
+
+.ptr-wrap.ptr-start .loading{
+  animation-play-state: running;
+}
