@@ -1,0 +1,32 @@
+<script>
+    // 回调
+    // 1
+    function FileComponent(path,cb) {
+        // todo
+        if(path){
+            setTimeout(()=>{
+                cb("读取完毕")
+            },3000) 
+        }
+    }
+
+    FileComponent('index.js', (file) => {
+        console.log(file)
+        // 3s 之后 输出 “读取完毕”
+    })
+    
+    // 2
+    // let a = new Array()
+    Array.prototype.myForeach = function(callback){
+        // TODO
+        for(let i=0;i<this.length;i++){
+            callback(this[i],i)
+        }
+    }
+    let arr = [1,2,3];
+    arr.myForeach((item,i)=>{
+        console.log(item,i)
+    })
+
+    
+</script>
