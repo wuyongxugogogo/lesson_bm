@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 // import { MyComponent } from './demo';
 import './styles.css'
 import { FaceComponent } from './demo2'
-import { MyComponent } from './demo2'
+import { MyComponent } from './demo5'
 
 function App() {
     const [satisfactionLevel, setSatisfactionLevel] = useState(300)
