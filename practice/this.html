@@ -1,0 +1,17 @@
+<script>
+    
+    window.name = 'ByteDance';
+    function A() {
+        console.log(this.name); // 456
+        this.name = 123;
+    }
+    A.prototype.getA = function () {
+        console.log(this); // window
+        return this.name + 1; 
+    }
+    A.prototype.name = 456;
+    let a = new A();
+    let funcA = a.getA;
+    console.log(funcA()); // ByteDance1
+
+</script>
