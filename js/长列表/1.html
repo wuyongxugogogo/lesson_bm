@@ -1,0 +1,29 @@
+<ul id="container"></ul>
+<script>
+    const container = document.getElementById('container')
+    let total = 100000;
+    // for (let i = 0; i < total; i++) {
+    //     let li = document.createElement('li')
+    //     li.innerText = i;
+    //     container.appendChild(li)
+    // }
+    // 分页 上拉加载
+    let once = 20;
+    let index = 0;
+    // let page = total / once;
+    // curTotal 当前剩余总数
+    function page(curTotal) {
+        if (curTotal <= 0) return
+        // 如果剩下的不够 20条
+        let pageCount = Math.min(curTotal, once);
+        for (let i = 0; i < pageCount; i++) {
+            const li = document.createElement('li');
+            li.innerText = Math.random();
+            container.appendChild(li);
+        }
+        setTimeout(() => {
+            page(curTotal - pageCount);
+        }, 16)
+    }
+    page(total)
+</script>
