@@ -1,0 +1,48 @@
+<script>
+    let listeners = {
+
+    }
+    let price1 = () => {
+        console.log('price1')
+    }
+    let price2 = () => {
+        console.log('price2')
+    }
+    let blog1 = () => {
+        console.log('blog1')
+    }
+    let blog2 = () => {
+        console.log('blog2')
+    }
+    function on(name, fn) {
+        if (!listeners[name]) {
+            listeners[name] = []
+        }
+        listeners[name].push(fn);
+
+    }
+    function emit(name) {
+        if (listeners[name]) {
+            listeners[name].map(item => item())
+        }
+        listeners[name] = listeners[name].filter(listen => listen.once )
+    }
+    function off(name, fn) {
+        listeners[name] = listeners[name].filter(listen => listen !== fn);
+    }
+    function once(name, fn){
+        fn.once = true;
+        on(name, fn);
+    }
+    on('price', price1);
+    // on('price', price2);
+    once('price', price2)
+    off('price',price1);
+    emit('price')
+    emit('price')
+    on('blog', () => {
+        console.log('blog update')
+    })
+    emit('blog')
+    
+</script>
