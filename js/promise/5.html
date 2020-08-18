@@ -1,0 +1,15 @@
+<script>
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(1)
+        }, 2000);
+    })
+        .then((r) => {
+            // 具有then属性的对象
+            return {
+                then: (resolve,reject)=>{
+                    resolve(123)
+                }
+            }
+        })
+</script>

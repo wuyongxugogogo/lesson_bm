@@ -1,0 +1,23 @@
+<script>
+    // 同步
+    function MyPromise(fn){
+        this.value = undefined;
+        let self = this;
+        function resolve(value) {
+            self.value = value;
+            console.log(value)
+        }
+        function reject() {}
+        fn(resolve,reject);
+    }
+    MyPromise.prototype.then = function(onFulfilled, onRejected){
+        onFulfilled(this.value)
+    }
+
+    new MyPromise((resolve,reject)=>{
+        resolve(1)
+    })
+    .then((res)=>{
+        console.log(res);
+    })
+</script>
