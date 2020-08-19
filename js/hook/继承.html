@@ -1,0 +1,54 @@
+<script>
+    // 题目
+    // 填充 inherit 完成输出。
+
+    function inherit(ParentConstructor, prototypeObj) {
+        function Cat(name) {
+            // 继承属性 super()
+            ParentConstructor.call(this,name);
+        }
+
+        Cat.prototype = prototypeObj
+        Object.setPrototypeOf(Cat.prototype, ParentConstructor.prototype);
+        // Cat.prototype.__proto__ = ParentConstructor.prototype;
+        return Cat
+    }
+
+    let animalNum = 0;
+    function Animal(name) {
+        animalNum++;
+        this.name = name;
+    }
+    Animal.prototype.getName = function () {
+        return this.name;
+    };
+    const Cat = inherit(Animal, {
+        say: function () {
+            console.log(`NO${animalNum}:${this.getName()}`);
+        }
+    });
+    const cat1 = new Cat('小花');
+    cat1.say(); // NO1:小花
+
+
+    function Foo(){
+        // this === obj
+        this.a = 1; // obj.a = 1
+        this.b = 2; // obj.b = 2
+    }
+    let obj = {}
+    Foo.call(obj)
+    console.log(obj)
+
+    let aaa = {
+        a:1
+    }
+    let bbb = {
+        b:1
+    }
+
+    let ccc = Object.create(bbb)
+    ccc.a = 1;
+    console.log(ccc)
+
+</script>
