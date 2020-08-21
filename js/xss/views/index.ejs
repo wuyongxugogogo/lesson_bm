@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 攻击 的例子-->
+    <a href="/?xss=<script>alert(document.cookie)</script>">xss1</a>
+    <a href="/?xss=<style>a{color: red}</style>">xss2</a>
+    <a href="/?xss=<iframe src='http://www.baidu.com'></iframe>">xss3</a>
+    首页
+    <%- username %>
+
+    <%- xss %>
+    <%= username %>
+    <!-- 没有 - =加一些语法 -->
+    <% username %>
+    <%- dataFromDB %>
+</body>
+
+</html>
