@@ -1,0 +1,19 @@
+<script>
+    let obj = {
+        toString(){
+            return 'str'
+        },
+        valueOf(){
+            return 0;
+        },
+        [Symbol.toPrimitive]: (hint)=>{
+            console.log('正在转换为',hint)
+            return 'hahaha'
+        }
+    }
+    console.log(obj == 0)
+    // Object.prototype.toString
+    console.log(String(obj))
+    // Object.prototype.valueOf
+    console.log(Number(obj))
+</script>
