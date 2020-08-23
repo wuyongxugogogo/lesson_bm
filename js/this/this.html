@@ -1,0 +1,117 @@
+<button id="btn">btn</button>
+<script>
+    // window = {
+    //   a: 'global variable'
+    // }
+    const btn = document.getElementById('btn');
+    function onClick() {
+        console.log('onClick 被调用了。。。')
+        console.log(this);
+        // 指向 obj ？？
+        console.log(this.a)
+    }
+    // click 运行的时候决定，addEventListener 会调用你，
+    // addEventListener 就会帮我们 回调里面this 绑定为我们的 点击的 元素
+    btn.addEventListener('click', function () {
+        // this === btn
+        // onClick.call(obj)
+        // 空函数，提到外面去了 =》 onClick
+        onClick.call(obj);
+    })
+    // F
+    // btn.addEventListener('click', onClick.call(obj));
+    // btn.addEventListener('click', onClick());
+    // T
+    // btn.addEventListener('click', onClick);
+    var obj = {
+        name: 'name',
+        a: 'obj a'
+    }
+    console.log(obj.name);
+    console.log(obj.sex);
+    // 全局变量
+    var a = 'global variable'
+    function foo(b, c) {
+        // this === Window
+        // this.a === Window.a
+        console.log(this);
+        // 获取全局下面的a
+        // 'global variable' + ' b': 拼接
+        console.log(this.a + b, c);
+    }
+    // let fetch = ??
+    // document.createElement('div');
+    // fetch('wwww.baidu.com')
+    // 前端 里面的 全局的一个变量，只要打开一个浏览器窗口，
+    // 就有 一个 Window 的变量, var 定义的全局变量 和 
+    // 平常用到的一些全局的方法(setTimeout, document)，都在 Window 下面
+    // 运行的时候 this
+    // 1: 不加任何修饰,用()调用，默认 this 指向了 window 
+    // foo(' b'); 
+    // 2：call 也是调用这个函数的, apply
+    // 第一个参数我们指定函数调用时 需要的 this
+    // 往后的参数 就是 foo 调用时需要的形参
+    // foo.call(window, ' b', 'c variable')
+    // foo.call(obj, 'b var', 'c var')
+    //  往后的参数 就是 foo 调用时需要的形参, 但是 不是一个个参数参开放在后面，
+    // 要用数组包起来
+    foo.apply(obj, ['b var', 'c var']);
+  // foo('b') 调用 window
+  // foo.call() foo.apply() 调用
+</script>
+<script>
+  // console.log('2', a);
+</script>
+<script>
+    //只要知道 this ? a 该去哪里获取了
+    var obj1 = {
+        a: 1,
+        say: function () {
+            // obj2
+            console.log(this.a);  // 1
+        }
+    }
+    var obj2 = {
+        a: 2,
+        say1: function () {
+            console.log(this);
+            // 对象.
+            // obj1.say();
+            // this ?? ==> obj2
+            obj1.say.call(this);
+            // obj1 里面 say 和 obj2 里面say1 的 this 没关系
+            // 跟调用的 所处的环境（外部的）没关系
+            // 只跟用什么方式调用有关
+        }
+    }
+    // obj1.say.call(obj2);   // ?? 2
+    // obj1.say()             // ?? 1
+    // // console.log(obj1.say)
+    // let test = obj1.say;
+    // test()                 // ?? 
+    obj2.say1()              // ??  
+</script>
+<script>
+    // let vs var
+    // var 没有块级 ({}) 作用域
+    // let 有，实践 let 更好的 var
+    {
+        // 块级 ({}) 作用域 只在这个块里面生效
+        var block1 = 123;
+    }
+    console.log(block1);
+  // {
+  //   let block2 = 456;
+  // }
+  // console.log(block2);
+
+    var abc = 2;
+    function foo(){
+        console.log(this.abc)
+    }
+    var obj3={
+        abc: 3,
+        foo: foo
+    }
+    setTimeout(obj3.foo, 100)
+</script>
