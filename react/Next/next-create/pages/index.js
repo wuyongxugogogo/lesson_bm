@@ -6,6 +6,12 @@ const Home = () => {
   // function gotoA(){
   //   Router.push('/jspangA')
   // }
+  function gotoXiaojiejie() {
+    Router.push({
+      pathname: 'xiaojiejie',
+      query: { name: '小兰' }
+    })
+  }
   return (
     <>
       <div>我是首页</div>
@@ -15,8 +21,12 @@ const Home = () => {
         <button onClick={gotoA}>jspangA</button>
       </div> */}
       <div>
-        <Link href="/xiaojiejie.js?name=小红"><a>小红</a></Link>
-        <Link href="/xiaojiejie.js?name=小兰"><a>小兰</a></Link>
+        <Link href="/xiaojiejie?name=小红"><a>选择小红</a></Link>
+        <br />
+        <Link href="/xiaojiejie?name=小兰"><a>选择小兰</a></Link>
+      </div>
+      <div>
+        <button onClick={gotoXiaojiejie}>选小兰</button>
       </div>
     </>
   )
