@@ -1,0 +1,16 @@
+{
+  "name": "babel-what",
+  "version": "1.0.0",
+  "description": "code -> code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.11.6",
+    "babel-types": "^6.26.0"
+  }
+}
