@@ -11,6 +11,7 @@
     "@ant-design/icons": "^4.2.2",
     "@zeit/next-css": "^1.0.1",
     "antd": "^4.6.3",
+    "axios": "^0.20.0",
     "babel-plugin-import": "^1.13.0",
     "markdown-navbar": "^1.4.3",
     "next": "9.5.3",
