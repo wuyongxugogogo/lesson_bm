@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head'
+import Link from 'next/link'
 import { Row, Col, List } from 'antd'
 import { CalendarOutlined, FolderOutlined, FireOutlined } from '@ant-design/icons'
 import axios from 'axios'
@@ -26,7 +27,9 @@ export default function Home(list) {
                   renderItem={item => (
                      <List.Item>
                         <div className="list-title">
-                           {item.title}
+                           <Link href={{ pathname: '/detailed', query: { id: item.id } }}>
+                              <a>{item.title}</a>
+                           </Link>
                         </div>
                         <div className="list-icon">
                            <span><CalendarOutlined />{item.addTime}</span>
