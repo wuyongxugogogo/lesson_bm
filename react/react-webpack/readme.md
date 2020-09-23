@@ -6,3 +6,5 @@
   - splitChunk
   - Dll  
   - 懒加载(import().then(XXXX))
+
+webpack把ES6代码转成ES5 通过babel插件
