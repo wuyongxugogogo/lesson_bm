@@ -5,7 +5,7 @@
   "main": "copy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon 连接数据库/index.js"
+    "start": "nodemon 连接数据库/index.js",
   },
   "keywords": [],
   "author": "",
