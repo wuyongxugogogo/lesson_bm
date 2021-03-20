@@ -1,16 +1,24 @@
-var twoSum = function (nums, target) {
-  let left = 0, right = nums.length - 1;
-  let sum = nums[left] + nums[right];
-  while (sum !== target) {
-    if (sum < target) {
-      left++;
-      sum = nums[left] + nums[right];
-    } else {
-      right--;
-      sum = nums[left] + nums[right];
+const maxMoney = (arr) => {
+  let min = arr[0];
+  let max = 0;
+  let result = [];
+  for(let i = 1; i < arr.length; i++) {
+    if(min > arr[i]) {
+      min = arr[i];
+    }else if (arr[i] - min > max) {
+      max = arr[i] - min;
     }
   }
-  return [nums[left], nums[right]]
-};
+  for(let j = 0; j < arr.length - 1; j++) {
+    for(let k = j + 1; k < arr.length; k++) {
+      if(arr[k] - arr[j] == max) {
+        result = arr.slice(j, k + 1);
+      } else {
+        continue
+      }
+    }
+  }
+  return result
+}
 
-console.log(twoSum([2, 7, 11, 15], 9));
+console.log(maxMoney([20,18,29,17,22,21,30,19]));
